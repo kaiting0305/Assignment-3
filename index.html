@@ -4,63 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MAKES Handcrafted Jewellery — Handmade simplicity, quality, charm.">
-    <link rel="stylesheet" href="main.css">
-    <title>MAKES handcrafted Jewellery</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>MAKES Handcrafted Jewellery</title>
 </head>
 <body>
+
+    <!-- HEADER -->
     <header>
         <a href="index.html" class="logo">
             <span class="logo-name">MAKES</span>
             <span class="logo-sub">handcrafted jewellery</span>
         </a>
 
-        <nav>
+        <nav class="nav-links">
             <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="collections.html">Collections</a>
-            <a href="cart.html">Cart</a>
+            <a href="pages/product-list.html">Shop</a>
+            <a href="pages/collection-list.html">Collections</a>
+            <a href="pages/shopping-cart.html">Cart</a>
         </nav>
 
         <div class="nav-icons">
-            <!-- Search -->
-            <button class="icon-btn" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <circle cx="11" cy="11" r="7"/>
-                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-                </svg>
+            <button class="icon-btn" aria-label="Search" onclick="window.location.href='pages/search-result.html'">
+                <i data-lucide="search"></i>
             </button>
-            <!-- Profile -->
             <button class="icon-btn" aria-label="My Account">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-                </svg>
+                <i data-lucide="user"></i>
             </button>
-            <!-- Help -->
             <button class="icon-btn" aria-label="Help">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
-                </svg>
+                <i data-lucide="help-circle"></i>
+            </button>
+            <button class="icon-btn hamburger" aria-label="Menu" id="hamburger-btn">
+                <i data-lucide="menu"></i>
             </button>
         </div>
     </header>
 
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <button class="icon-btn" id="close-menu-btn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="pages/product-list.html">Shop</a>
+            <a href="pages/collection-list.html">Collections</a>
+            <a href="pages/shopping-cart.html">Cart</a>
+            <hr>
+            <span class="mobile-nav-disabled">Account</span>
+            <span class="mobile-nav-disabled">Help Center</span>
+            <span class="mobile-nav-disabled">Logout</span>
+        </nav>
+    </div>
+
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-placeholder">
-        <span>Hero Image</span>
-        </div>
+        <img src="./assets/homepage-hero.jpeg" alt="MAKES handcrafted jewellery">
         <div class="hero-content">
-        <p class="hero-tagline">Handmade &nbsp; Simplicity &nbsp; Quality &nbsp; Charm</p>
-        <a href="shop.html" class="btn-primary">Shop All</a>
+            <p class="hero-tagline">Handmade &nbsp; Simplicity &nbsp; Quality &nbsp; Charm</p>
+            <a href="pages/product-list.html" class="btn-primary">Shop All</a>
         </div>
-        <button class="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
-        </svg>
-        </button>
     </section>
-    
+
+    <!-- COLLECTIONS SHOWCASE -->
+    <section class="collections-showcase">
+        <h2>Collections</h2>
+        <div class="collections-scroll">
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-bytheseashore.jpeg" alt="By the Seashore">
+                <span>By the Seashore</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-hellopetal.jpeg" alt="Hello Petal">
+                <span>Hello Petal</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-heybabe.png" alt="Hey Babe">
+                <span>Hey Babe</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-inblack.png" alt="In Black">
+                <span>In Black</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-inlove.jpeg" alt="In Love">
+                <span>In Love</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-lucky.jpeg" alt="Lucky">
+                <span>Lucky</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-petitepieces.jpeg" alt="Petite Pieces">
+                <span>Petite Pieces</span>
+            </a>
+            <a href="pages/collection-list.html" class="collection-item">
+                <img src="./assets/collection-tackle.png" alt="Tackle">
+                <span>Tackle</span>
+            </a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- CATEGORY CARDS -->
+    <!-- Desktop: 2-column grid. Row 1 (Best Sellers, Necklaces): pic left, content right. Row 2 (Earrings, Charms): content left, pic right. -->
+    <!-- Mobile: 1 column, alternating sides. -->
+    <section class="categories-section">
+    <h2 class="section-heading">Categories</h2>
+    <div class="content-grid">
+
+        <div class="content-card">
+            <img src="./assets/homepage-best-sellers.jpeg" alt="Best Sellers">
+            <div class="card-content">
+                <p class="card-subtitle">Best Sellers</p>
+                <p class="card-text">Our most loved pieces, chosen by customers who know what they want: timeless designs that sell out and come back by popular demand.</p>
+                <a href="pages/product-list.html" class="btn-primary">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <img src="./assets/homepage-necklace.jpeg" alt="Necklaces">
+            <div class="card-content">
+                <p class="card-subtitle">Necklaces</p>
+                <p class="card-text">Delicate chains and statement pendants, each one shaped by hand and finished to wear every single day.</p>
+                <a href="pages/product-list.html" class="btn-primary">Shop Necklaces</a>
+            </div>
+        </div>
+
+        <hr class="grid-divider">
+
+        <div class="content-card">
+            <img src="./assets/homepage-earrings.jpeg" alt="Earrings">
+            <div class="card-content">
+                <p class="card-subtitle">Earrings</p>
+                <p class="card-text">From subtle studs to elegant drops, our earrings are designed to move with you and catch the light just right.</p>
+                <a href="pages/product-list.html" class="btn-primary">Shop Earrings</a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <img src="./assets/homepage-charms&pendents.jpeg" alt="Charms & Pendants">
+            <div class="card-content">
+                <p class="card-subtitle">Charms & Pendants</p>
+                <p class="card-text">Small in size but full of meaning — mix, layer, and make them yours with our collection of handcrafted pendants and charms.</p>
+                <a href="pages/product-list.html" class="btn-primary">Shop Charms</a>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- MANUFACTURE PROCESS -->
+    <section class="manufacture-about">
+        <h2>Manufacture Process</h2>
+        <p class="manufacture-about-text">Every piece at MAKES begins with raw sterling silver and a pair of hands. We cut, shape, solder, and polish each item individually in our small studio — no mass production, no shortcuts. The process is slow by design, because we believe the time spent making something is part of what makes it worth wearing. Each piece carries the small marks of that process, and we think that's exactly as it should be.</p>
+        <button class="btn-primary">More</button>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ABOUT US -->
+    <section class="manufacture-about">
+        <h2>About Us</h2>
+        <p class="manufacture-about-text">MAKES handcrafted jewellery is designed and created on one bench by one woman, Maya Kessler. As the daughter and great-granddaughter of Swiss watchmakers she values the process of creating beautiful unique pieces using jewellers' traditional hand skills.</p>
+        <button class="btn-primary">More</button>
+    </section>
+
+    <hr class="divider">
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 MAKES Handcrafted Jewellery</p>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script>lucide.createIcons();</script>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
