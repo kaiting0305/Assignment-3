@@ -3,9 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="MAKES Handcrafted Jewellery — Browse all collections.">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/collection-list.css">
+    <title>Collections — MAKES Handcrafted Jewellery</title>
 </head>
 <body>
-    
+
+    <!-- HEADER -->
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="logo-name">MAKES</span>
+            <span class="logo-sub">handcrafted jewellery</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html" class="nav-active">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+        </nav>
+
+        <div class="nav-icons">
+            <button class="icon-btn search-btn" aria-label="Search" id="search-open-btn">
+                <i data-lucide="search"></i>
+            </button>
+            <button class="icon-btn" aria-label="My Account">
+                <i data-lucide="user"></i>
+            </button>
+            <button class="icon-btn" aria-label="Help">
+                <i data-lucide="help-circle"></i>
+            </button>
+            <button class="icon-btn hamburger" aria-label="Menu" id="hamburger-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+            <button class="btn-primary search-submit">Search</button>
+            <button class="icon-btn search-close" id="search-close-btn" aria-label="Close search">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="../index.html" class="logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <button class="icon-btn" id="close-menu-btn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+            <hr>
+            <span class="mobile-nav-disabled">Account</span>
+            <span class="mobile-nav-disabled">Help Center</span>
+            <span class="mobile-nav-disabled">Logout</span>
+        </nav>
+    </div>
+
+    <!-- PAGE HEADING -->
+    <section class="page-heading">
+        <h1>Collections</h1>
+        <p class="page-heading-sub">Explore our handcrafted collections, each with its own story.</p>
+    </section>
+
+    <!-- COLLECTIONS GRID -->
+    <section class="collections-grid-section">
+        <div class="collections-grid">
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-bytheseashore.jpeg" alt="By the Seashore collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">By the Seashore</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-hellopetal.jpeg" alt="Hello Petal collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">Hello Petal</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-heybabe.png" alt="Hey Babe collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">Hey Babe</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-inblack.png" alt="In Black collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">In Black</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-inlove.jpeg" alt="In Love collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">In Love</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-lucky.jpeg" alt="Lucky collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">Lucky</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-petitepieces.jpeg" alt="Petite Pieces collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">Petite Pieces</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+            <a href="product-list.html" class="collection-card">
+                <img src="../assets/collection-tackle.png" alt="Tackle collection" class="collection-card-img">
+                <div class="collection-card-info">
+                    <span class="collection-card-name">Tackle</span>
+                    <span class="btn-outline">View Collection</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 MAKES Handcrafted Jewellery</p>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script>lucide.createIcons();</script>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>

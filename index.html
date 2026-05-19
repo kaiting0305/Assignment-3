@@ -6,6 +6,7 @@
     <meta name="description" content="MAKES Handcrafted Jewellery — Handmade simplicity, quality, charm.">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/homepage.css">
     <title>MAKES Handcrafted Jewellery</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
         </nav>
 
         <div class="nav-icons">
-            <button class="icon-btn" aria-label="Search" onclick="window.location.href='pages/search-result.html'">
+            <button class="icon-btn" aria-label="Search" id="search-open-btn">
                 <i data-lucide="search"></i>
             </button>
             <button class="icon-btn" aria-label="My Account">
@@ -39,6 +40,17 @@
             </button>
         </div>
     </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+            <button class="btn-primary search-submit">Search</button>
+            <button class="icon-btn search-close" id="search-close-btn" aria-label="Close search">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-menu" id="mobile-menu">

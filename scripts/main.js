@@ -1,3 +1,31 @@
+// Search overlay (visual only — not functional)
+const searchOpenBtn = document.getElementById('search-open-btn');
+const searchCloseBtn = document.getElementById('search-close-btn');
+const searchOverlay = document.getElementById('search-overlay');
+
+if (searchOpenBtn && searchOverlay) {
+    searchOpenBtn.addEventListener('click', () => {
+        searchOverlay.classList.add('open');
+        const input = searchOverlay.querySelector('.search-input');
+        if (input) input.focus();
+    });
+}
+
+if (searchCloseBtn && searchOverlay) {
+    searchCloseBtn.addEventListener('click', () => {
+        searchOverlay.classList.remove('open');
+    });
+}
+
+// Close search overlay on backdrop click
+if (searchOverlay) {
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) {
+            searchOverlay.classList.remove('open');
+        }
+    });
+}
+
 // Hamburger menu
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');

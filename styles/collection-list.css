@@ -1,0 +1,144 @@
+/* ── COLLECTION LIST PAGE ── */
+/* Styles specific to collection-list.html only.
+   All shared styles (header, footer, buttons, etc.) live in main.css */
+
+/* ── PAGE HEADING AREA ── */
+.page-heading {
+  padding: 56px 48px 40px;
+}
+
+.page-heading h1 {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.page-heading-sub {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+/* ── COLLECTIONS GRID ── */
+.collections-grid-section {
+  padding: 0 48px 72px;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ── COLLECTION CARD ── */
+.collection-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--color-cream);
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: opacity 0.2s ease;
+  min-height: 180px;
+}
+
+.collection-card:hover {
+  opacity: 0.88;
+}
+
+.collection-card-img {
+  width: 200px;
+  min-width: 200px;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.collection-card-info {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.collection-card-name {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+}
+
+/* Outlined "View Collection" button — matches Figma's bordered button */
+.btn-outline {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid var(--color-dark);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+  cursor: pointer;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-heading {
+    padding: 36px 20px 24px;
+  }
+
+  .page-heading h1 {
+    font-size: 2rem;
+  }
+
+  .collections-grid-section {
+    padding: 0 0 48px;
+  }
+
+  /* Mobile: vertical list, 1 column, image-left + name-right, divider lines */
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .collection-card {
+    background-color: transparent;
+    border-bottom: 1px solid var(--color-cream);
+    min-height: unset;
+    padding: 0;
+  }
+
+  .collection-card-img {
+    width: 90px;
+    min-width: 90px;
+    height: 90px;
+  }
+
+  .collection-card-info {
+    padding: 16px 20px;
+    gap: 0;
+  }
+
+  .collection-card-name {
+    font-size: 1.1rem;
+  }
+
+  /* Hide the "View Collection" button on mobile — matches Figma mobile design */
+  .btn-outline {
+    display: none;
+  }
+}
