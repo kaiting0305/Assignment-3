@@ -1,0 +1,411 @@
+/* ── PRODUCT DETAIL PAGE ── */
+/* Styles specific to product-detail.html only.
+   All shared styles (header, footer, buttons, etc.) live in main.css */
+
+/* ── BACK LINK ── */
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--color-brown);
+  padding: 28px 48px 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.pd-back:hover {
+  color: var(--color-dark);
+}
+
+/* ── HERO SECTION: image + info side by side ── */
+.pd-hero {
+  display: flex;
+  gap: 56px;
+  padding: 28px 48px 0;
+  align-items: flex-start;
+}
+
+/* ── IMAGE COLUMN ── */
+.pd-image-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.pd-main-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumbnail strip */
+.pd-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pd-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.pd-thumb.active,
+.pd-thumb:hover {
+  border-color: var(--color-brown);
+}
+
+/* ── INFO COLUMN ── */
+.pd-info-col {
+  flex: 1;
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.pd-name {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.pd-price {
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.pd-short-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+
+/* Quantity selector */
+.pd-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+}
+
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--color-dark);
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.qty-btn:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.qty-display {
+  width: 48px;
+  height: 36px;
+  border: 1px solid var(--color-dark);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+}
+
+/* Action buttons */
+.pd-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pd-add-to-cart {
+  width: 100%;
+  padding: 13px 0;
+  text-align: center;
+}
+
+.pd-buy-now {
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  display: block;
+  border: 1.5px solid var(--color-dark);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pd-buy-now:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ── CART TOAST ── */
+.cart-toast {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background-color: var(--color-cream);
+  border-left: 3px solid var(--color-brown);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.cart-toast.visible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cart-toast-link {
+  color: var(--color-brown);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cart-toast-link:hover {
+  color: var(--color-dark);
+}
+
+/* ── TABS SECTION ── */
+.pd-tabs-section {
+  padding: 40px 48px 56px;
+}
+
+.pd-tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--color-cream);
+}
+
+.pd-tab-btn {
+  padding: 10px 28px;
+  background: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  cursor: pointer;
+  position: relative;
+  bottom: -1px;
+  transition: color 0.15s ease;
+}
+
+.pd-tab-btn:hover {
+  color: var(--color-brown);
+}
+
+.pd-tab-btn.active {
+  border-color: var(--color-brown);
+  color: var(--color-dark);
+  background: var(--color-bg);
+}
+
+.pd-tab-btn.reviews-tab {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pd-tab-content {
+  border: 1px solid var(--color-cream);
+  border-top: none;
+  padding: 28px 32px;
+  min-height: 160px;
+}
+
+.tab-panel {
+  display: none;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--color-dark);
+  white-space: pre-line;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ── RECOMMENDATIONS ── */
+.pd-recs-section {
+  padding: 0 48px 72px;
+}
+
+.pd-recs-section h2 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  color: var(--color-dark);
+}
+
+.pd-recs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Reuse product-card styles from product-list.css if loaded,
+   otherwise replicate the minimal version here */
+.pd-recs-grid .product-card {
+  display: block;
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: opacity 0.2s ease;
+}
+
+.pd-recs-grid .product-card:hover {
+  opacity: 0.88;
+}
+
+.pd-recs-grid .product-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.pd-recs-grid .product-card-info {
+  padding: 10px 0 4px;
+}
+
+.pd-recs-grid .product-card-name {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.pd-recs-grid .product-card-price {
+  font-size: 0.85rem;
+  color: var(--color-dark);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .pd-back {
+    padding: 20px 20px 0;
+  }
+
+  /* Stack hero columns */
+  .pd-hero {
+    flex-direction: column;
+    gap: 0;
+    padding: 16px 20px 0;
+  }
+
+  .pd-image-col {
+    width: 100%;
+  }
+
+  .pd-thumbs {
+    display: none; /* hide thumbnails on mobile */
+  }
+
+  .pd-info-col {
+    padding: 20px 0 0;
+  }
+
+  .pd-name {
+    font-size: 1.4rem;
+  }
+
+  .pd-actions {
+    flex-direction: column;
+  }
+
+  /* ── MOBILE TABS: 2×2 grid, content hidden by default ── */
+  .pd-tabs-section {
+    padding: 28px 20px 48px;
+  }
+
+  /* Replace horizontal tab bar with 2×2 grid */
+  .pd-tab-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .pd-tab-btn {
+    padding: 12px 8px;
+    border: 1px solid var(--color-cream);
+    background: var(--color-cream);
+    bottom: 0;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  .pd-tab-btn.active {
+    border-color: var(--color-brown);
+    background: var(--color-bg);
+  }
+
+  /* Content hidden by default on mobile */
+  .pd-tab-content {
+    display: none;
+    margin-top: 12px;
+    border: 1px solid var(--color-cream);
+    padding: 20px;
+    min-height: unset;
+  }
+
+  .pd-tab-content.mobile-open {
+    display: block;
+  }
+
+  /* Recommendations: 2 col on mobile */
+  .pd-recs-section {
+    padding: 0 20px 48px;
+  }
+
+  .pd-recs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Hide 3rd recommendation on mobile */
+  .pd-recs-grid .product-card:nth-child(3) {
+    display: none;
+  }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAKES Handcrafted Jewellery — Product Detail">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/product-detail.css">
+    <title>Product — MAKES Handcrafted Jewellery</title>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="logo-name">MAKES</span>
+            <span class="logo-sub">handcrafted jewellery</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+        </nav>
+
+        <div class="nav-icons">
+            <button class="icon-btn" aria-label="Search" id="search-open-btn">
+                <i data-lucide="search"></i>
+            </button>
+            <button class="icon-btn" aria-label="My Account">
+                <i data-lucide="user"></i>
+            </button>
+            <button class="icon-btn" aria-label="Help">
+                <i data-lucide="help-circle"></i>
+            </button>
+            <button class="icon-btn hamburger" aria-label="Menu" id="hamburger-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+            <button class="btn-primary search-submit">Search</button>
+            <button class="icon-btn search-close" id="search-close-btn" aria-label="Close search">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="../index.html" class="logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <button class="icon-btn" id="close-menu-btn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+            <hr>
+            <span class="mobile-nav-disabled">Account</span>
+            <span class="mobile-nav-disabled">Help Center</span>
+            <span class="mobile-nav-disabled">Logout</span>
+        </nav>
+    </div>
+
+    <!-- BACK LINK -->
+    <button class="pd-back" onclick="history.back()">
+        <i data-lucide="chevron-left" style="width:14px;height:14px;"></i> Back
+    </button>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HERO: image + info                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="pd-hero">
+
+        <!-- Image Column -->
+        <div class="pd-image-col">
+            <img id="pd-main-img" class="pd-main-img" src="" alt="">
+            <div class="pd-thumbs" id="pd-thumbs">
+                <!-- thumbnails injected by JS -->
+            </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="pd-info-col">
+            <h1 class="pd-name" id="pd-name"></h1>
+            <p class="pd-price" id="pd-price"></p>
+            <p class="pd-short-desc" id="pd-short-desc"></p>
+
+            <!-- Quantity Selector -->
+            <div class="pd-qty-row">
+                <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+                <div class="qty-display" id="qty-display">1</div>
+                <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pd-actions">
+                <button class="btn-primary pd-add-to-cart" id="add-to-cart-btn">Add to Cart</button>
+                <button class="pd-buy-now" id="buy-now-btn">Buy Now</button>
+            </div>
+
+            <!-- Cart Toast -->
+            <div class="cart-toast" id="cart-toast">
+                <span>Added to cart</span>
+                <a href="shopping-cart.html" class="cart-toast-link">
+                    View Cart <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- TABS                                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="pd-tabs-section">
+        <div class="pd-tab-bar" role="tablist">
+            <button class="pd-tab-btn active" data-tab="description" role="tab" aria-selected="true">Description</button>
+            <button class="pd-tab-btn" data-tab="measurements" role="tab" aria-selected="false">Measurements</button>
+            <button class="pd-tab-btn" data-tab="productCare" role="tab" aria-selected="false">Product Care</button>
+            <button class="pd-tab-btn reviews-tab" data-tab="reviews" role="tab" aria-selected="false" tabindex="-1">Reviews</button>
+        </div>
+        <div class="pd-tab-content" id="pd-tab-content">
+            <div class="tab-panel active" id="tab-description" role="tabpanel"></div>
+            <div class="tab-panel" id="tab-measurements" role="tabpanel"></div>
+            <div class="tab-panel" id="tab-productCare" role="tabpanel"></div>
+            <div class="tab-panel" id="tab-reviews" role="tabpanel">Reviews coming soon.</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- RECOMMENDATIONS                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <section class="pd-recs-section">
+        <h2>Recommendations</h2>
+        <div class="pd-recs-grid" id="pd-recs-grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <a href="../index.html" class="footer-logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="product-list.html">Shop</a>
+                <a href="collection-list.html">Collections</a>
+                <a href="shopping-cart.html">Cart</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; MAKES handcrafted jewellery 2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script>lucide.createIcons();</script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/product-detail.js"></script>
+</body>
+</html>
