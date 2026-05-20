@@ -5,19 +5,49 @@
 /* ── HERO ── */
 .hero {
   position: relative;
-}
-
-.hero img {
-  width: 100%;
+  overflow: hidden;
   height: 80vh;
-  object-fit: cover;
-  display: block;
 }
 
+/* Both videos sit absolutely, filling the hero */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── VIDEO CROSSFADE ──
+   Video is 5s long. Cycle = 10s (two loops per round).
+   1s crossfade (10% of cycle) every 5s.
+   Video-2 starts at -5s so it's mid-cycle — always one is visible. */
+@keyframes heroCrossFade {
+  0%, 40%  { opacity: 1; }
+  50%, 90% { opacity: 0; }
+  100%     { opacity: 1; }
+}
+
+.hero-video-1 {
+  animation: heroCrossFade 10s infinite;
+}
+
+.hero-video-2 {
+  animation: heroCrossFade 10s -5s infinite;
+}
+
+/* Hero text sits above the videos */
 .hero-content {
   position: absolute;
   top: 20%;
   left: 48px;
+  z-index: 2;
+}
+
+/* ── TEXT STAGGER: pure opacity, no transform ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .hero-tagline {
@@ -25,6 +55,15 @@
   font-size: 2.4rem;
   color: var(--color-dark);
   letter-spacing: 0.06em;
+  opacity: 0;
+  animation: heroFadeIn 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.hero-cta {
+  opacity: 0;
+  animation: heroFadeIn 1s ease forwards;
+  animation-delay: 1s;
 }
 
 /* ── COLLECTIONS SHOWCASE ── */
@@ -171,7 +210,8 @@
 
 /* ── RESPONSIVE — homepage only ── */
 @media (max-width: 768px) {
-  .hero img {
+  /* Hero height shrinks; videos fill it via position:absolute/inset:0 */
+  .hero {
     height: 55vh;
   }
 

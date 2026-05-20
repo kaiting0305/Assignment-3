@@ -1,0 +1,421 @@
+/* ── PRODUCT LIST PAGE ── */
+/* Styles specific to product-list.html only.
+   All shared styles (header, footer, buttons, etc.) live in main.css */
+
+/* ── PAGE LAYOUT ── */
+/* Desktop: sidebar (240px) + main content flex row */
+.product-list-layout {
+  display: flex;
+  align-items: flex-start;
+  padding: 48px 48px 72px;
+  gap: 48px;
+}
+
+/* ── FILTER SIDEBAR ── */
+.filter-sidebar {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px; /* below sticky header */
+}
+
+.filter-sidebar-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 24px;
+}
+
+.filter-group {
+  margin-bottom: 28px;
+}
+
+.filter-group-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brown);
+  margin-bottom: 14px;
+}
+
+.filter-divider {
+  border: none;
+  border-top: 1px solid var(--color-cream);
+  margin-bottom: 28px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-brown);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.filter-option input[type="checkbox"]:checked {
+  background-color: var(--color-brown);
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: -1px;
+  width: 6px;
+  height: 9px;
+  border: 2px solid var(--color-white);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.filter-option label {
+  font-size: 0.88rem;
+  color: var(--color-dark);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+/* ── MAIN CONTENT AREA ── */
+.product-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── TOOLBAR ── */
+.product-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.product-count {
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Order By button */
+.btn-order-by {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background-color: var(--color-brown);
+  color: var(--color-white);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.btn-order-by:hover {
+  background-color: var(--color-dark);
+}
+
+/* View toggle icons */
+.view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.view-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--color-dark);
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.15s ease;
+}
+
+.view-btn.active {
+  opacity: 1;
+  color: var(--color-brown);
+}
+
+.view-btn:hover {
+  opacity: 0.8;
+}
+
+/* Order By dropdown */
+.order-by-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-cream);
+  min-width: 180px;
+  z-index: 50;
+  padding: 8px 0;
+}
+
+.order-by-dropdown.open {
+  display: block;
+}
+
+.order-by-option {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.order-by-option:hover {
+  background-color: var(--color-cream);
+}
+
+/* ── PRODUCT GRID ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── PRODUCT CARD ── */
+.product-card {
+  display: block;
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: opacity 0.2s ease;
+}
+
+.product-card:hover {
+  opacity: 0.88;
+}
+
+.product-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card-info {
+  padding: 12px 0 4px;
+}
+
+.product-card-name {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.product-card-price {
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+}
+
+/* ── PAGINATION ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: border-color 0.15s ease;
+}
+
+.page-btn:hover {
+  border-color: var(--color-cream);
+}
+
+.page-btn.active {
+  border-color: var(--color-brown);
+  color: var(--color-brown);
+}
+
+/* ── MOBILE-ONLY FILTER OVERLAY ── */
+.filter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 250;
+  padding: 24px 24px 40px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.filter-overlay.open {
+  display: flex;
+}
+
+.filter-overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.filter-overlay-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.filter-overlay-apply {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+/* ── MOBILE TOOLBAR (pill buttons + category tabs) ── */
+.mobile-toolbar {
+  display: none;
+  padding: 20px 20px 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-action-row {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background-color: var(--color-brown);
+  color: var(--color-white);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-pill:hover {
+  background-color: var(--color-dark);
+}
+
+/* Category tabs — 2×2 grid on mobile */
+.category-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.category-tab {
+  padding: 10px 0;
+  background: var(--color-cream);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.category-tab.active,
+.category-tab:hover {
+  background-color: var(--color-brown);
+  color: var(--color-white);
+}
+
+/* Mobile results row */
+.mobile-results-row {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+}
+
+/* Mobile-only grids — hidden on desktop, shown inside the media query */
+.product-grid-mobile {
+  display: none;
+}
+
+.pagination-mobile {
+  display: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Hide desktop layout */
+  .product-list-layout {
+    display: none;
+  }
+
+  /* Show mobile toolbar */
+  .mobile-toolbar {
+    display: flex;
+  }
+
+  .mobile-results-row {
+    display: flex;
+  }
+
+  /* Mobile product grid */
+  .product-grid-mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px 20px 48px;
+  }
+
+  /* Mobile pagination */
+  .pagination-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 20px 40px;
+  }
+}

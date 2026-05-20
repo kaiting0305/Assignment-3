@@ -77,10 +77,16 @@
 
     <!-- HERO -->
     <section class="hero">
-        <img src="./assets/homepage-hero.jpeg" alt="MAKES handcrafted jewellery">
+        <!-- Two copies of the same video stacked — crossfade via CSS animation offset -->
+        <video class="hero-video hero-video-1" autoplay muted loop playsinline aria-hidden="true">
+            <source src="./assets/homepage-hero-video.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video hero-video-2" autoplay muted loop playsinline aria-hidden="true">
+            <source src="./assets/homepage-hero-video.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
             <p class="hero-tagline">Handmade &nbsp; Simplicity &nbsp; Quality &nbsp; Charm</p>
-            <a href="pages/product-list.html" class="btn-primary">Shop All</a>
+            <a href="pages/product-list.html" class="btn-primary hero-cta">Shop All</a>
         </div>
     </section>
 
@@ -195,7 +201,28 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 MAKES Handcrafted Jewellery</p>
+        <div class="footer-top">
+            <a href="index.html" class="footer-logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="pages/product-list.html">Shop</a>
+                <a href="pages/collection-list.html">Collections</a>
+                <a href="pages/shopping-cart.html">Cart</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; MAKES handcrafted jewellery 2026. All rights reserved.</p>
+        </div>
     </footer>
 
     <!-- SCROLL TO TOP -->
