@@ -8,7 +8,7 @@
   display: flex;
   align-items: flex-start;
   padding: 48px 48px 72px;
-  gap: 48px;
+  gap: 40px;
 }
 
 /* ── FILTER SIDEBAR ── */
@@ -18,6 +18,13 @@
   flex-shrink: 0;
   position: sticky;
   top: 80px; /* below sticky header */
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-cream) transparent;
+  border-right: 1px solid var(--color-cream);
+  padding-right: 40px;
+  padding-bottom: 24px;
 }
 
 .filter-sidebar-title {
@@ -410,12 +417,160 @@
     padding: 16px 20px 48px;
   }
 
-  /* Mobile pagination */
-  .pagination-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 0 20px 40px;
-  }
+  /* Mob
+/* ── APPLY FILTERS BUTTON (desktop sidebar) ── */
+.filter-apply-desktop-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 11px 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+}
+
+/* ── PRICE FILTER ── */
+.price-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Dual-range slider track container */
+.price-slider-wrap {
+  position: relative;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.price-track,
+.price-track-fill {
+  position: absolute;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.price-track {
+  left: 0;
+  right: 0;
+  background: var(--color-cream);
+}
+
+.price-track-fill {
+  background: var(--color-brown);
+  left: 0%;
+  right: 0%;
+}
+
+/* Both range inputs sit on top of each other */
+.range-min,
+.range-max {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+  outline: none;
+  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+/* Thumbs are individually draggable */
+.range-min::-webkit-slider-thumb,
+.range-max::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-brown);
+  cursor: pointer;
+  pointer-events: auto;
+  border: 2.5px solid var(--color-bg);
+  box-shadow: 0 0 0 1.5px var(--color-brown);
+  position: relative;
+  z-index: 1;
+}
+
+.range-min::-moz-range-thumb,
+.range-max::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-brown);
+  cursor: pointer;
+  pointer-events: auto;
+  border: 2.5px solid var(--color-bg);
+  box-shadow: 0 0 0 1.5px var(--color-brown);
+}
+
+/* Hide browser's default track — our custom .price-track div handles it */
+.range-min::-webkit-slider-runnable-track,
+.range-max::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 2px;
+}
+
+.range-min::-moz-range-track,
+.range-max::-moz-range-track {
+  background: transparent;
+  height: 2px;
+}
+
+/* Min/Max number inputs row */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-input-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-cream);
+  padding: 7px 10px;
+  gap: 3px;
+  background: var(--color-bg);
+}
+
+.price-input-label {
+  font-size: 0.78rem;
+  color: var(--color-dark);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.input-min,
+.input-max {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-dark);
+  outline: none;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+
+.input-min::-webkit-outer-spin-button,
+.input-min::-webkit-inner-spin-button,
+.input-max::-webkit-outer-spin-button,
+.input-max::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-dash {
+  font-size: 0.78rem;
+  color: var(--color-dark);
+  opacity: 0.4;
+  flex-shrink: 0;
 }

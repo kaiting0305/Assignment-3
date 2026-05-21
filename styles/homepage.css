@@ -276,3 +276,9 @@
     font-size: 1.5rem;
   }
 }
+
+/* ── Homepage: extra header padding so it reads well against the large hero video ── */
+header {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}

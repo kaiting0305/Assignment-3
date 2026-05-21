@@ -112,3 +112,75 @@ document.querySelectorAll('.page-btn').forEach(btn => {
     btn.classList.add('active');
   });
 });
+
+/* ── PRICE RANGE FILTER ── */
+/* Works on any .price-filter container — handles both desktop and mobile */
+function initPriceFilter(wrap) {
+  const rangeMin  = wrap.querySelector('.range-min');
+  const rangeMax  = wrap.querySelector('.range-max');
+  const fill      = wrap.querySelector('.price-track-fill');
+  const inputMin  = wrap.querySelector('.input-min');
+  const inputMax  = wrap.querySelector('.input-max');
+
+  if (!rangeMin || !rangeMax) return;
+
+  const MIN = parseInt(rangeMin.min);
+  const MAX = parseInt(rangeMin.max);
+  const GAP = 5; // minimum distance between thumbs
+
+  function updateFill() {
+    const minVal = parseInt(rangeMin.value);
+    const maxVal = parseInt(rangeMax.value);
+    const leftPct  = ((minVal - MIN) / (MAX - MIN)) * 100;
+    const rightPct = ((maxVal - MIN) / (MAX - MIN)) * 100;
+    if (fill) {
+      fill.style.left  = leftPct  + '%';
+      fill.style.right = (100 - rightPct) + '%';
+    }
+    if (inputMin) inputMin.value = minVal;
+    if (inputMax) inputMax.value = maxVal;
+  }
+
+  rangeMin.addEventListener('input', () => {
+    let minVal = parseInt(rangeMin.value);
+    let maxVal = parseInt(rangeMax.value);
+    if (minVal > maxVal - GAP) {
+      rangeMin.value = maxVal - GAP;
+    }
+    updateFill();
+  });
+
+  rangeMax.addEventListener('input', () => {
+    let minVal = parseInt(rangeMin.value);
+    let maxVal = parseInt(rangeMax.value);
+    if (maxVal < minVal + GAP) {
+      rangeMax.value = minVal + GAP;
+    }
+    updateFill();
+  });
+
+  /* Sync number inputs → sliders */
+  if (inputMin) {
+    inputMin.addEventListener('change', () => {
+      let val = Math.min(Math.max(parseInt(inputMin.value) || MIN, MIN), parseInt(rangeMax.value) - GAP);
+      rangeMin.value = val;
+      inputMin.value = val;
+      updateFill();
+    });
+  }
+
+  if (inputMax) {
+    inputMax.addEventListener('change', () => {
+      let val = Math.max(Math.min(parseInt(inputMax.value) || MAX, MAX), parseInt(rangeMin.value) + GAP);
+      rangeMax.value = val;
+      inputMax.value = val;
+      updateFill();
+    });
+  }
+
+  /* Initial render */
+  updateFill();
+}
+
+/* Init all price filters on the page (desktop + mobile) */
+document.querySelectorAll('.price-filter').forEach(initPriceFilter);

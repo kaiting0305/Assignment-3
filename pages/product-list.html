@@ -130,6 +130,32 @@
             </label>
         </div>
 
+        <hr class="filter-divider">
+
+        <!-- Price Filter (mobile) -->
+        <div class="filter-group">
+            <p class="filter-group-title">Price</p>
+            <div class="price-filter">
+                <div class="price-slider-wrap">
+                    <div class="price-track"></div>
+                    <div class="price-track-fill"></div>
+                    <input type="range" class="range-min" min="0" max="300" value="0" step="5" aria-label="Minimum price">
+                    <input type="range" class="range-max" min="0" max="300" value="300" step="5" aria-label="Maximum price">
+                </div>
+                <div class="price-inputs">
+                    <div class="price-input-group">
+                        <span class="price-input-label">$</span>
+                        <input type="number" class="input-min" min="0" max="300" value="0" placeholder="Min">
+                    </div>
+                    <span class="price-dash">—</span>
+                    <div class="price-input-group">
+                        <span class="price-input-label">$</span>
+                        <input type="number" class="input-max" min="0" max="300" value="300" placeholder="Max">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="filter-overlay-apply">
             <button class="btn-primary" id="filter-apply-btn" style="width:100%;">Apply Filters</button>
         </div>
@@ -154,9 +180,6 @@
                 </label>
                 <label class="filter-option">
                     <input type="checkbox"> <span>Charms &amp; Pendants</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox"> <span>Rings</span>
                 </label>
             </div>
 
@@ -189,6 +212,34 @@
                     <input type="checkbox"> <span>Tackle</span>
                 </label>
             </div>
+
+            <hr class="filter-divider">
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <p class="filter-group-title">Price</p>
+                <div class="price-filter">
+                    <div class="price-slider-wrap">
+                        <div class="price-track"></div>
+                        <div class="price-track-fill"></div>
+                        <input type="range" class="range-min" min="0" max="300" value="0" step="5" aria-label="Minimum price">
+                        <input type="range" class="range-max" min="0" max="300" value="300" step="5" aria-label="Maximum price">
+                    </div>
+                    <div class="price-inputs">
+                        <div class="price-input-group">
+                            <span class="price-input-label">$</span>
+                            <input type="number" class="input-min" min="0" max="300" value="0" placeholder="Min">
+                        </div>
+                        <span class="price-dash">—</span>
+                        <div class="price-input-group">
+                            <span class="price-input-label">$</span>
+                            <input type="number" class="input-max" min="0" max="300" value="300" placeholder="Max">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary filter-apply-desktop-btn">Apply Filters</button>
         </aside>
 
         <!-- Main Content -->

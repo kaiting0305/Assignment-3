@@ -1,0 +1,343 @@
+/* ── SHOPPING CART PAGE ── */
+/* Styles specific to shopping-cart.html only.
+   All shared styles (header, footer, buttons, etc.) live in main.css */
+
+/* ── PAGE WRAP: 2-col on desktop ── */
+.sc-wrap {
+  display: flex;
+  gap: 48px;
+  padding: 40px 48px 80px;
+  align-items: flex-start;
+}
+
+/* ── LEFT: items + discount ── */
+.sc-items-col {
+  flex: 2;
+  min-width: 0;
+}
+
+.sc-title {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 32px;
+}
+
+/* ── CART ITEM ROWS ── */
+.sc-item {
+  display: grid;
+  grid-template-columns: 96px 1fr auto auto 28px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-cream);
+}
+
+.sc-item:first-child {
+  border-top: 1px solid var(--color-cream);
+}
+
+.sc-item-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  display: block;
+}
+
+.sc-item-info {
+  min-width: 0;
+}
+
+.sc-item-name {
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--color-dark);
+  margin-bottom: 5px;
+}
+
+.sc-item-price {
+  font-size: 0.84rem;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* ── QTY SELECTOR (reused from product-detail style) ── */
+.sc-item-qty {
+  display: flex;
+  align-items: center;
+}
+
+.sc-qty-btn {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid var(--color-dark);
+  font-size: 1rem;
+  color: var(--color-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  line-height: 1;
+}
+
+.sc-qty-btn:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.sc-qty-display {
+  width: 40px;
+  height: 32px;
+  border: 1px solid var(--color-dark);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+}
+
+/* ── LINE TOTAL ── */
+.sc-item-total {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── REMOVE BUTTON ── */
+.sc-item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-dark);
+  opacity: 0.35;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.sc-item-remove:hover {
+  opacity: 1;
+}
+
+.sc-item-remove svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── EMPTY STATE ── */
+.sc-empty {
+  display: none;
+  padding: 56px 0;
+  text-align: center;
+}
+
+.sc-empty p {
+  font-size: 1rem;
+  color: var(--color-dark);
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+
+/* ── DISCOUNT ROW ── */
+.sc-discount-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 28px;
+}
+
+.sc-discount-label {
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.sc-discount-input {
+  width: 220px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-cream);
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.sc-discount-input:focus {
+  border-color: var(--color-dark);
+}
+
+.sc-apply-btn {
+  padding: 10px 22px;
+  border: 1px solid var(--color-dark);
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sc-apply-btn:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ── RIGHT: ORDER SUMMARY ── */
+.sc-summary-col {
+  flex: 1;
+  min-width: 260px;
+  border: 1px solid var(--color-cream);
+  padding: 28px 24px;
+  position: sticky;
+  top: 88px;
+}
+
+.sc-summary-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--color-dark);
+  margin-bottom: 22px;
+}
+
+.sc-summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-cream);
+  margin-bottom: 16px;
+}
+
+.sc-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.87rem;
+  color: var(--color-dark);
+}
+
+.sc-summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.sc-checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  background-color: var(--color-brown);
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sc-checkout-btn:hover {
+  background-color: var(--color-dark);
+}
+
+.sc-checkout-btn.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sc-wrap {
+    flex-direction: column;
+    padding: 28px 20px 56px;
+    gap: 0;
+  }
+
+  .sc-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  /* Mobile item: image spans both info rows */
+  .sc-item {
+    grid-template-columns: 76px 1fr 28px;
+    grid-template-rows: auto auto;
+    gap: 6px 12px;
+    padding: 16px 0;
+  }
+
+  .sc-item-img {
+    width: 76px;
+    height: 76px;
+    grid-row: 1 / 3;
+    align-self: start;
+  }
+
+  .sc-item-info {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .sc-item-qty {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Hide desktop-only line total — price already visible in info */
+  .sc-item-total {
+    display: none;
+  }
+
+  .sc-item-remove {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+    padding: 2px;
+  }
+
+  .sc-discount-row {
+    padding-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .sc-discount-input {
+    width: 100%;
+  }
+
+  /* Summary: unstyle the box, stack below items */
+  .sc-summary-col {
+    min-width: unset;
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--color-cream);
+    padding: 20px 0 0;
+    margin-top: 20px;
+    position: static;
+  }
+
+  /* Hide "Order Summary" heading on mobile — redundant */
+  .sc-summary-title {
+    display: none;
+  }
+}
