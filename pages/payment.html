@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAKES Handcrafted Jewellery — Payment">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/payment.css">
+    <title>Payment — MAKES Handcrafted Jewellery</title>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="logo-name">MAKES</span>
+            <span class="logo-sub">handcrafted jewellery</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+        </nav>
+
+        <div class="nav-icons">
+            <button class="icon-btn" aria-label="Search" id="search-open-btn">
+                <i data-lucide="search"></i>
+            </button>
+            <button class="icon-btn" aria-label="My Account">
+                <i data-lucide="user"></i>
+            </button>
+            <button class="icon-btn" aria-label="Help">
+                <i data-lucide="help-circle"></i>
+            </button>
+            <button class="icon-btn hamburger" aria-label="Menu" id="hamburger-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+            <button class="btn-primary search-submit">Search</button>
+            <button class="icon-btn search-close" id="search-close-btn" aria-label="Close search">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="../index.html" class="logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <button class="icon-btn" id="close-menu-btn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+            <hr>
+            <span class="mobile-nav-disabled">Account</span>
+            <span class="mobile-nav-disabled">Help Center</span>
+            <span class="mobile-nav-disabled">Logout</span>
+        </nav>
+    </div>
+
+    <!-- PAYMENT PAGE -->
+    <main class="pm-wrap">
+
+        <!-- LEFT: Form column -->
+        <div class="pm-form-col">
+
+            <!-- Mobile: Order Summary accordion (hidden on desktop via CSS) -->
+            <div class="pm-mobile-summary" id="pm-mobile-summary">
+                <div class="pm-mobile-summary-header" id="pm-mobile-summary-header">
+                    <span class="pm-mobile-summary-label">
+                        Order Summary
+                        <i data-lucide="chevron-down"></i>
+                    </span>
+                    <span class="pm-mobile-summary-total" id="pm-mobile-total">$0</span>
+                </div>
+                <div class="pm-mobile-summary-body" id="pm-mobile-summary-body">
+                    <div class="pm-summary-items" id="pm-mobile-items"></div>
+                    <div class="pm-summary-rows">
+                        <div class="pm-summary-row">
+                            <span>Subtotal</span>
+                            <span id="pm-mobile-subtotal">$0</span>
+                        </div>
+                        <div class="pm-summary-row">
+                            <span>Shipping</span>
+                            <span>Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile: Express checkout (hidden on desktop via CSS) -->
+            <div class="pm-mobile-express" id="pm-mobile-express">
+                <p class="pm-mobile-express-label">Express Checkout</p>
+                <div class="pm-express-row">
+                    <!-- Google Pay -->
+                    <button class="pm-gpay-btn">
+                        <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.48h4.844a4.14 4.14 0 01-1.796 2.717v2.258h2.908c1.702-1.566 2.684-3.874 2.684-6.615z"/>
+                            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/>
+                            <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+                            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+                        </svg>
+                        Pay
+                    </button>
+                    <!-- PayPal -->
+                    <button class="pm-paypal-btn">
+                        <svg width="14" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" aria-hidden="true">
+                            <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944 3.72A.775.775 0 015.715 3h7.5c2.588 0 4.38.756 5.324 2.247.42.663.684 1.37.797 2.082.117.743.04 1.542-.225 2.365l-.013.04v.364l-.011.009c-.525 3.062-2.833 4.965-6.264 4.965h-1.58a.952.952 0 00-.94.806l-.748 4.459-.016.097-.009.066a.127.127 0 01-.126.102l-3.327-.007z"/>
+                            <path fill="rgba(255,255,255,0.45)" d="M20.25 7.904l-.011.059C19.34 12.756 16.42 14.91 12.108 14.91H9.929a.773.773 0 00-.765.655l-1.022 6.5a.608.608 0 00.6.702h3.975a.677.677 0 00.668-.572l.027-.144.53-3.367.034-.186a.677.677 0 01.668-.572h.42c2.724 0 4.857-1.107 5.48-4.31.26-1.338.126-2.454-.563-3.237a3.21 3.21 0 00-.75-.573l.001-.002z"/>
+                        </svg>
+                        PayPal
+                    </button>
+                    <!-- Apple Pay -->
+                    <button class="pm-applepay-btn">
+                        <svg width="14" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" aria-hidden="true">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Pay
+                    </button>
+                </div>
+            </div>
+
+            <!-- BILLING DETAILS -->
+            <section class="pm-billing">
+                <h2 class="pm-section-title">Billing Details</h2>
+                <div class="pm-field-grid">
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-first-name">First Name</label>
+                        <input class="pm-input" type="text" id="pm-first-name" placeholder="First name" autocomplete="given-name">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-last-name">Last Name</label>
+                        <input class="pm-input" type="text" id="pm-last-name" placeholder="Last name" autocomplete="family-name">
+                    </div>
+
+                    <div class="pm-field pm-field-full">
+                        <label class="pm-label" for="pm-email">Email</label>
+                        <input class="pm-input" type="email" id="pm-email" placeholder="your@email.com" autocomplete="email">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-phone">Phone Number</label>
+                        <input class="pm-input" type="tel" id="pm-phone" placeholder="+61 400 000 000" autocomplete="tel">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-country">Country</label>
+                        <input class="pm-input" type="text" id="pm-country" placeholder="Australia" autocomplete="country-name">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-state">State</label>
+                        <input class="pm-input" type="text" id="pm-state" placeholder="VIC" autocomplete="address-level1">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-postcode">Post Code</label>
+                        <input class="pm-input" type="text" id="pm-postcode" placeholder="3000" autocomplete="postal-code">
+                    </div>
+
+                    <div class="pm-field pm-field-full">
+                        <label class="pm-label" for="pm-address">Address Line</label>
+                        <input class="pm-input" type="text" id="pm-address" placeholder="Street address" autocomplete="street-address">
+                    </div>
+
+                    <div class="pm-field pm-field-full">
+                        <label class="pm-label" for="pm-description">Description (optional)</label>
+                        <textarea class="pm-textarea" id="pm-description" placeholder="Any notes for your order..."></textarea>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PAYMENT -->
+            <section class="pm-payment">
+                <h2 class="pm-section-title">Payment</h2>
+
+                <div class="pm-credit-row">
+                    <span class="pm-credit-label">Credit Card</span>
+                    <div class="pm-card-brands">
+                        <span class="pm-visa">VISA</span>
+                        <span class="pm-mastercard">
+                            <span class="pm-mc-left"></span>
+                            <span class="pm-mc-right"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="pm-field-grid">
+
+                    <div class="pm-field pm-field-full">
+                        <label class="pm-label" for="pm-card-number">Card Number</label>
+                        <input class="pm-input" type="text" id="pm-card-number" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-expiry">Expiry Date</label>
+                        <input class="pm-input" type="text" id="pm-expiry" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp">
+                    </div>
+
+                    <div class="pm-field">
+                        <label class="pm-label" for="pm-cvc">CVC</label>
+                        <input class="pm-input" type="text" id="pm-cvc" placeholder="123" maxlength="4" autocomplete="cc-csc">
+                    </div>
+
+                    <div class="pm-field pm-field-full">
+                        <label class="pm-label" for="pm-card-name">Name on Card</label>
+                        <input class="pm-input" type="text" id="pm-card-name" placeholder="Full name on card" autocomplete="cc-name">
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Mobile: Total + Pay Now bar (hidden on desktop via CSS) -->
+            <div class="pm-mobile-pay-bar" id="pm-mobile-pay-bar">
+                <div class="pm-mobile-total-row">
+                    <span>Total</span>
+                    <span id="pm-mobile-pay-total">$0</span>
+                </div>
+                <p class="pm-validation-note" id="pm-validation-note-mobile">Please fill in all required fields before continuing.</p>
+                <a href="order-confirmation.html" class="pm-pay-now-btn" id="pm-pay-now-mobile">Pay Now</a>
+            </div>
+
+        </div><!-- end pm-form-col -->
+
+        <!-- RIGHT: Order Summary sidebar (desktop only, hidden on mobile via CSS) -->
+        <aside class="pm-summary-col">
+            <h2 class="pm-summary-title">Order Summary</h2>
+
+            <!-- Product list rendered by JS -->
+            <div class="pm-summary-items" id="pm-desktop-items"></div>
+
+            <div class="pm-summary-rows">
+                <div class="pm-summary-row">
+                    <span>Subtotal</span>
+                    <span id="pm-desktop-subtotal">$0</span>
+                </div>
+                <div class="pm-summary-row">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+            </div>
+
+            <div class="pm-summary-total-row">
+                <span>Total</span>
+                <span id="pm-desktop-total">$0</span>
+            </div>
+
+            <div class="pm-express-row" style="margin-bottom: 12px;">
+                <!-- Google Pay -->
+                <button class="pm-gpay-btn">
+                    <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.48h4.844a4.14 4.14 0 01-1.796 2.717v2.258h2.908c1.702-1.566 2.684-3.874 2.684-6.615z"/>
+                        <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/>
+                        <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+                        <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+                    </svg>
+                    Pay
+                </button>
+                <!-- PayPal -->
+                <button class="pm-paypal-btn">
+                    <svg width="14" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" aria-hidden="true">
+                        <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944 3.72A.775.775 0 015.715 3h7.5c2.588 0 4.38.756 5.324 2.247.42.663.684 1.37.797 2.082.117.743.04 1.542-.225 2.365l-.013.04v.364l-.011.009c-.525 3.062-2.833 4.965-6.264 4.965h-1.58a.952.952 0 00-.94.806l-.748 4.459-.016.097-.009.066a.127.127 0 01-.126.102l-3.327-.007z"/>
+                        <path fill="rgba(255,255,255,0.45)" d="M20.25 7.904l-.011.059C19.34 12.756 16.42 14.91 12.108 14.91H9.929a.773.773 0 00-.765.655l-1.022 6.5a.608.608 0 00.6.702h3.975a.677.677 0 00.668-.572l.027-.144.53-3.367.034-.186a.677.677 0 01.668-.572h.42c2.724 0 4.857-1.107 5.48-4.31.26-1.338.126-2.454-.563-3.237a3.21 3.21 0 00-.75-.573l.001-.002z"/>
+                    </svg>
+                    PayPal
+                </button>
+                <!-- Apple Pay -->
+                <button class="pm-applepay-btn">
+                    <svg width="14" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" aria-hidden="true">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Pay
+                </button>
+            </div>
+
+            <p class="pm-validation-note" id="pm-validation-note-desktop">Please fill in all required fields before continuing.</p>
+            <a href="order-confirmation.html" class="pm-pay-now-btn" id="pm-pay-now-desktop">Pay Now</a>
+        </aside>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <a href="../index.html" class="footer-logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="product-list.html">Shop</a>
+                <a href="collection-list.html">Collections</a>
+                <a href="shopping-cart.html">Cart</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; MAKES handcrafted jewellery 2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script>lucide.createIcons();</script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/payment.js"></script>
+</body>
+</html>

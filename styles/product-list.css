@@ -236,7 +236,6 @@
 
 .product-card-name {
   font-family: var(--font-title);
-  font-style: italic;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -246,6 +245,7 @@
 
 .product-card-price {
   font-size: 0.85rem;
+  font-style: italic;
   color: var(--color-dark);
   letter-spacing: 0.02em;
 }
@@ -417,7 +417,9 @@
     padding: 16px 20px 48px;
   }
 
-  /* Mob
+  /* Mobile pagination handled via .pagination-mobile below */
+}
+
 /* ── APPLY FILTERS BUTTON (desktop sidebar) ── */
 .filter-apply-desktop-btn {
   width: 100%;
@@ -573,4 +575,27 @@
   color: var(--color-dark);
   opacity: 0.4;
   flex-shrink: 0;
+}
+
+/* ── MOBILE: fix thumb vertical centering ── */
+@media (max-width: 768px) {
+  .price-slider-wrap {
+    height: 32px;
+  }
+
+  /* Give the range inputs the full height of the wrapper so the browser
+     centres the 16px thumb within the full 32px zone rather than the 2px track */
+  .range-min,
+  .range-max {
+    height: 32px;
+    top: 0;
+    transform: none;
+  }
+
+  /* Re-centre the custom track div within the taller wrapper */
+  .price-track,
+  .price-track-fill {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

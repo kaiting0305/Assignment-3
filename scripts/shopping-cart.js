@@ -38,19 +38,23 @@ function buildItemRow(item, product) {
   row.dataset.id  = product.id;
 
   row.innerHTML = `
-    <img src="${product.image}" alt="${product.name}" class="sc-item-img">
+    <a href="product-detail.html?id=${product.id}" class="sc-item-img-link">
+      <img src="${product.image}" alt="${product.name}" class="sc-item-img">
+    </a>
     <div class="sc-item-info">
-      <p class="sc-item-name">${product.name}</p>
+      <a href="product-detail.html?id=${product.id}" class="sc-item-name-link">
+        <p class="sc-item-name">${product.name}</p>
+      </a>
       <p class="sc-item-price">${fmt(product.price)}</p>
     </div>
     <div class="sc-item-qty">
-      <button class="sc-qty-btn" data-action="minus" data-id="${product.id}" aria-label="Decrease quantity">&#8722;</button>
+      <button class="sc-qty-btn ${item.qty <= 1 ? 'sc-qty-btn--disabled' : ''}" data-action="minus" data-id="${product.id}" aria-label="Decrease quantity" ${item.qty <= 1 ? 'disabled' : ''}>&#8722;</button>
       <div class="sc-qty-display">${item.qty}</div>
       <button class="sc-qty-btn" data-action="plus" data-id="${product.id}" aria-label="Increase quantity">&#43;</button>
     </div>
     <span class="sc-item-total">${fmt(lineTotal)}</span>
-    <button class="sc-item-remove" data-id="${product.id}" aria-label="Remove ${product.name}">
-      <i data-lucide="x"></i>
+    <button class="sc-item-delete" data-id="${product.id}" aria-label="Remove ${product.name}">
+      <i data-lucide="trash-2"></i>
     </button>
   `;
 
@@ -92,11 +96,13 @@ function renderCart() {
   attachEvents();
 }
 
-/* ── Attach qty + remove event listeners ── */
+/* ── Attach qty + delete event listeners ── */
 function attachEvents() {
   /* Quantity buttons */
   itemListEl.querySelectorAll('.sc-qty-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      if (btn.disabled) return;
+
       const id     = Number(btn.dataset.id);
       const action = btn.dataset.action;
       const cart   = getCart();
@@ -107,22 +113,17 @@ function attachEvents() {
         item.qty += 1;
         saveCart(cart);
         renderCart();
-      } else if (action === 'minus') {
-        if (item.qty > 1) {
-          item.qty -= 1;
-          saveCart(cart);
-          renderCart();
-        } else {
-          /* qty would hit 0 — remove item entirely */
-          removeFromCart(id);
-          renderCart();
-        }
+      } else if (action === 'minus' && item.qty > 1) {
+        /* Minimum quantity is 1 — never remove via minus */
+        item.qty -= 1;
+        saveCart(cart);
+        renderCart();
       }
     });
   });
 
-  /* Remove buttons */
-  itemListEl.querySelectorAll('.sc-item-remove').forEach(btn => {
+  /* Delete (trash) buttons — only these remove the item entirely */
+  itemListEl.querySelectorAll('.sc-item-delete').forEach(btn => {
     btn.addEventListener('click', () => {
       removeFromCart(Number(btn.dataset.id));
       renderCart();

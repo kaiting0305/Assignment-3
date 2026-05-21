@@ -110,7 +110,16 @@ tabBtns.forEach(btn => {
   });
 });
 
-/* ── 8. Recommendations (3 random products, excluding current) ── */
+/* ── 8. Mobile: no tab highlighted on initial page load ── */
+if (window.innerWidth <= 768) {
+  tabBtns.forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  tabPanels.forEach(p => p.classList.remove('active'));
+}
+
+/* ── 9. Recommendations (3 random products, excluding current) ── */
 const recsGrid = document.getElementById('pd-recs-grid');
 const pool     = products.filter(p => p.id !== product.id);
 

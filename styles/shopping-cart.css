@@ -29,7 +29,7 @@
 /* ── CART ITEM ROWS ── */
 .sc-item {
   display: grid;
-  grid-template-columns: 96px 1fr auto auto 28px;
+  grid-template-columns: 96px 1fr auto auto 32px;
   align-items: center;
   gap: 20px;
   padding: 20px 0;
@@ -40,11 +40,30 @@
   border-top: 1px solid var(--color-cream);
 }
 
+.sc-item-img-link {
+  display: block;
+  flex-shrink: 0;
+}
+
 .sc-item-img {
   width: 96px;
   height: 96px;
   object-fit: cover;
   display: block;
+  transition: opacity 0.15s ease;
+}
+
+.sc-item-img-link:hover .sc-item-img {
+  opacity: 0.85;
+}
+
+.sc-item-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sc-item-name-link:hover .sc-item-name {
+  color: var(--color-brown);
 }
 
 .sc-item-info {
@@ -112,27 +131,41 @@
   white-space: nowrap;
 }
 
-/* ── REMOVE BUTTON ── */
-.sc-item-remove {
+/* ── DISABLED MINUS BUTTON ── */
+.sc-qty-btn--disabled,
+.sc-qty-btn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.sc-qty-btn--disabled:hover,
+.sc-qty-btn:disabled:hover {
+  background-color: transparent;
+  color: var(--color-dark);
+}
+
+/* ── DELETE (TRASH) BUTTON ── */
+.sc-item-delete {
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color-dark);
-  opacity: 0.35;
+  opacity: 0.4;
   padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, color 0.15s ease;
 }
 
-.sc-item-remove:hover {
+.sc-item-delete:hover {
   opacity: 1;
+  color: #c0392b;
 }
 
-.sc-item-remove svg {
-  width: 14px;
-  height: 14px;
+.sc-item-delete svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ── EMPTY STATE ── */
@@ -281,17 +314,20 @@
 
   /* Mobile item: image spans both info rows */
   .sc-item {
-    grid-template-columns: 76px 1fr 28px;
+    grid-template-columns: 76px 1fr 32px;
     grid-template-rows: auto auto;
     gap: 6px 12px;
     padding: 16px 0;
   }
 
+  .sc-item-img-link {
+    grid-row: 1 / 3;
+    align-self: start;
+  }
+
   .sc-item-img {
     width: 76px;
     height: 76px;
-    grid-row: 1 / 3;
-    align-self: start;
   }
 
   .sc-item-info {
@@ -309,7 +345,7 @@
     display: none;
   }
 
-  .sc-item-remove {
+  .sc-item-delete {
     grid-column: 3;
     grid-row: 1;
     align-self: start;

@@ -19,27 +19,27 @@
 }
 
 /* ── VIDEO CROSSFADE ──
-   Video is 5s long. Cycle = 10s (two loops per round).
-   1s crossfade (10% of cycle) every 5s.
-   Video-2 starts at -5s so it's mid-cycle — always one is visible. */
+   Video is 4.5s long. Cycle = 9s (two loops per round).
+   ~0.9s crossfade (10% of cycle) every 4.5s.
+   Video-2 starts at -4.5s so it's mid-cycle — always one is visible. */
 @keyframes heroCrossFade {
-  0%, 40%  { opacity: 1; }
-  50%, 90% { opacity: 0; }
+  0%, 47%  { opacity: 1; }
+  50%, 97% { opacity: 0; }
   100%     { opacity: 1; }
 }
 
 .hero-video-1 {
-  animation: heroCrossFade 10s infinite;
+  animation: heroCrossFade 9s infinite;
 }
 
 .hero-video-2 {
-  animation: heroCrossFade 10s -5s infinite;
+  animation: heroCrossFade 9s -4.5s infinite;
 }
 
 /* Hero text sits above the videos */
 .hero-content {
   position: absolute;
-  top: 20%;
+  top: 14%;
   left: 48px;
   z-index: 2;
 }
@@ -58,6 +58,7 @@
   opacity: 0;
   animation: heroFadeIn 1s ease forwards;
   animation-delay: 0.4s;
+  margin-bottom: 32px;
 }
 
 .hero-cta {
@@ -171,7 +172,7 @@
 }
 
 .card-subtitle {
-  font-size: 0.72rem;
+  font-size: 1.4rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-brown);
@@ -277,8 +278,32 @@
   }
 }
 
-/* ── Homepage: extra header padding so it reads well against the large hero video ── */
+/* Homepage header — the hero video below creates a visual compression
+   effect, making the nav appear smaller than on other pages.
+   Increase padding AND explicitly bump up font/icon sizes to compensate. */
 header {
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding: 22px 32px;
+}
+
+header .logo-name {
+  font-size: 1.65rem;
+}
+
+header .logo-sub {
+  font-size: 0.72rem;
+}
+
+header .nav-links {
+  font-size: 1rem;
+}
+
+header .icon-btn svg {
+  width: 26px;
+  height: 26px;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 18px 20px;
+  }
 }

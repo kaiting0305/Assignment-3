@@ -211,13 +211,14 @@
 
 .pd-tab-bar {
   display: flex;
-  border-bottom: 1px solid var(--color-cream);
+  border-bottom: none;
+  gap: 4px;
 }
 
 .pd-tab-btn {
   padding: 10px 28px;
-  background: none;
-  border: 1px solid transparent;
+  background: var(--color-cream);
+  border: 1px solid var(--color-cream);
   border-bottom: none;
   font-family: var(--font-title);
   font-size: 1rem;
@@ -226,27 +227,30 @@
   cursor: pointer;
   position: relative;
   bottom: -1px;
-  transition: color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .pd-tab-btn:hover {
-  color: var(--color-brown);
+  background: var(--color-brown);
+  border-color: var(--color-brown);
+  color: var(--color-white);
 }
 
 .pd-tab-btn.active {
+  background: var(--color-brown);
   border-color: var(--color-brown);
-  color: var(--color-dark);
-  background: var(--color-bg);
+  color: var(--color-white);
 }
 
 .pd-tab-btn.reviews-tab {
-  opacity: 0.45;
   cursor: default;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .pd-tab-content {
   border: 1px solid var(--color-cream);
-  border-top: none;
+  border-top: 3px solid var(--color-brown);
   padding: 28px 32px;
   min-height: 160px;
 }
@@ -377,8 +381,9 @@
   }
 
   .pd-tab-btn.active {
+    background: var(--color-brown);
     border-color: var(--color-brown);
-    background: var(--color-bg);
+    color: var(--color-white);
   }
 
   /* Content hidden by default on mobile */

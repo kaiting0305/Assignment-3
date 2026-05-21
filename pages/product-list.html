@@ -249,6 +249,12 @@
             <div class="product-toolbar">
                 <span class="product-count" id="desktop-product-count">Showing 1 — 21 of 57 results</span>
                 <div class="toolbar-right">
+                    <!-- Pagination at top -->
+                    <div class="pagination" style="margin-top:0;">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                    </div>
                     <!-- Order By with dropdown -->
                     <div style="position:relative;">
                         <button class="btn-order-by" id="order-by-btn" aria-expanded="false">
@@ -275,13 +281,6 @@
 
             <!-- Product Grid (JS-rendered) -->
             <div class="product-grid" id="product-grid"></div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-            </div>
 
         </main>
     </div>
