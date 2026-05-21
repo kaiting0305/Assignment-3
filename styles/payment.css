@@ -19,7 +19,7 @@
 /* ── SECTION HEADINGS ── */
 .pm-section-title {
   font-family: var(--font-title);
-  font-style: italic;
+  font-style: bold;
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.02em;

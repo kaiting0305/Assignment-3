@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAKES Handcrafted Jewellery — Order Confirmed.">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/order-confirmation.css">
+    <title>Order Confirmed — MAKES Handcrafted Jewellery</title>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="../index.html" class="logo">
+            <span class="logo-name">MAKES</span>
+            <span class="logo-sub">handcrafted jewellery</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+        </nav>
+
+        <div class="nav-icons">
+            <button class="icon-btn search-btn" aria-label="Search" id="search-open-btn">
+                <i data-lucide="search"></i>
+            </button>
+            <button class="icon-btn" aria-label="My Account">
+                <i data-lucide="user"></i>
+            </button>
+            <button class="icon-btn" aria-label="Help">
+                <i data-lucide="help-circle"></i>
+            </button>
+            <button class="icon-btn hamburger" aria-label="Menu" id="hamburger-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+            <button class="btn-primary search-submit">Search</button>
+            <button class="icon-btn search-close" id="search-close-btn" aria-label="Close search">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="../index.html" class="logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <button class="icon-btn" id="close-menu-btn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="../index.html">Home</a>
+            <a href="product-list.html">Shop</a>
+            <a href="collection-list.html">Collections</a>
+            <a href="shopping-cart.html">Cart</a>
+            <hr>
+            <span class="mobile-nav-disabled">Account</span>
+            <span class="mobile-nav-disabled">Help Center</span>
+            <span class="mobile-nav-disabled">Logout</span>
+        </nav>
+    </div>
+
+    <!-- MAIN -->
+    <main class="oc-wrap">
+
+        <!-- LEFT: Hero + Order Details -->
+        <div class="oc-main">
+
+            <!-- HERO -->
+            <div class="oc-hero">
+                <div class="oc-check-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h1 class="oc-title">Order Confirmed!</h1>
+                <p class="oc-subtitle">Thank you for your purchase. We'll send you a confirmation email shortly and begin handcrafting your order.</p>
+            </div>
+
+            <!-- ORDER DETAILS BOX -->
+            <div class="oc-details-box">
+                <h2 class="oc-details-title">Order Details</h2>
+
+                <!-- 2×2 meta grid -->
+                <div class="oc-meta-grid">
+                    <div>
+                        <p class="oc-meta-label">Order Number</p>
+                        <p class="oc-meta-value" id="oc-order-number">#—</p>
+                    </div>
+                    <div>
+                        <p class="oc-meta-label">Estimated Delivery</p>
+                        <p class="oc-meta-value">7–11 Business Days</p>
+                    </div>
+                    <div>
+                        <p class="oc-meta-label">Payment Method</p>
+                        <p class="oc-meta-value" id="oc-payment-method">Credit Card</p>
+                    </div>
+                    <div>
+                        <p class="oc-meta-label">Shipping To</p>
+                        <p class="oc-meta-value" id="oc-shipping-address">—</p>
+                    </div>
+                </div>
+
+                <!-- Items list -->
+                <div class="oc-items" id="oc-items">
+                    <!-- Populated by order-confirmation.js -->
+                </div>
+
+                <!-- Totals -->
+                <div class="oc-totals">
+                    <div class="oc-totals-row">
+                        <span>Subtotal</span>
+                        <span id="oc-subtotal">—</span>
+                    </div>
+                    <div class="oc-totals-row">
+                        <span>Shipping</span>
+                        <span id="oc-shipping">Free</span>
+                    </div>
+                    <div class="oc-totals-total">
+                        <span>Total Paid</span>
+                        <span id="oc-total">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Shopping — mobile only -->
+            <a href="product-list.html" class="oc-continue-btn">Continue Shopping</a>
+
+        </div>
+
+        <!-- RIGHT: Sidebar (desktop only) -->
+        <aside class="oc-sidebar">
+
+            <!-- What happens next? -->
+            <div class="oc-next-box">
+                <h2 class="oc-box-title">What happens next?</h2>
+                <div class="oc-steps">
+                    <div class="oc-step">
+                        <div class="oc-step-num">1</div>
+                        <div>
+                            <p class="oc-step-title">Order Confirmation</p>
+                            <p class="oc-step-desc">You'll receive a confirmation email with your order details and receipt within a few minutes.</p>
+                        </div>
+                    </div>
+                    <div class="oc-step">
+                        <div class="oc-step-num">2</div>
+                        <div>
+                            <p class="oc-step-title">Handcrafting Your Order</p>
+                            <p class="oc-step-desc">Each piece is made by hand in our small studio. We'll carefully craft your jewellery over the next few days.</p>
+                        </div>
+                    </div>
+                    <div class="oc-step">
+                        <div class="oc-step-num">3</div>
+                        <div>
+                            <p class="oc-step-title">Shipping to You</p>
+                            <p class="oc-step-desc">Once your order is ready, we'll pack it with care and dispatch it. You'll receive a tracking number by email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Need help? -->
+            <div class="oc-help-box">
+                <h2 class="oc-box-title">Need help?</h2>
+                <p class="oc-help-text">If you have any questions about your order or need to make changes, please get in touch and we'll be happy to help.</p>
+                <a href="#" class="oc-contact-btn">Contact Us</a>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <a href="../index.html" class="footer-logo">
+                <span class="logo-name">MAKES</span>
+                <span class="logo-sub">handcrafted jewellery</span>
+            </a>
+            <nav class="footer-nav">
+                <a href="../index.html">Home</a>
+                <a href="product-list.html">Shop</a>
+                <a href="collection-list.html">Collections</a>
+                <a href="shopping-cart.html">Cart</a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; MAKES handcrafted jewellery 2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script src="../scripts/order-confirmation.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

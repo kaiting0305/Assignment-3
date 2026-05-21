@@ -1,0 +1,331 @@
+/* ── ORDER CONFIRMATION PAGE ── */
+/* Styles specific to order-confirmation.html only.
+   All shared styles (header, footer, buttons, etc.) live in main.css */
+
+/* ── PAGE WRAP: 2-col on desktop ── */
+.oc-wrap {
+  display: flex;
+  gap: 40px;
+  padding: 48px 48px 80px;
+  align-items: flex-start;
+}
+
+/* ── LEFT: Hero + Order Details ── */
+.oc-main {
+  flex: 2;
+  min-width: 0;
+}
+
+/* ── HERO: checkmark + title ── */
+.oc-hero {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.oc-check-circle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--color-brown);
+}
+
+.oc-check-circle svg {
+  width: 36px;
+  height: 36px;
+}
+
+.oc-title {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+}
+
+.oc-subtitle {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+  opacity: 0.75;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ── ORDER DETAILS BOX ── */
+.oc-details-box {
+  border: 1px solid var(--color-cream);
+  padding: 28px 32px;
+}
+
+.oc-details-title {
+  font-family: var(--font-title);
+  font-style: bold;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  margin-bottom: 20px;
+}
+
+/* 2×2 meta grid: order#/delivery, payment/shipping */
+.oc-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-cream);
+  margin-bottom: 20px;
+}
+
+.oc-meta-label {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.oc-meta-value {
+  font-size: 0.88rem;
+  color: var(--color-dark);
+}
+
+/* ── ITEMS LIST ── */
+.oc-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-cream);
+  margin-bottom: 16px;
+}
+
+.oc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.oc-item-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.oc-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.oc-item-name {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--color-dark);
+}
+
+.oc-item-price {
+  font-size: 0.82rem;
+  color: var(--color-dark);
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+/* ── TOTALS ── */
+.oc-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oc-totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-dark);
+}
+
+.oc-totals-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  padding-top: 10px;
+  border-top: 1px solid var(--color-cream);
+  margin-top: 4px;
+}
+
+/* ── RIGHT SIDEBAR ── */
+.oc-sidebar {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 88px;
+}
+
+/* Shared box style */
+.oc-next-box,
+.oc-help-box {
+  border: 1px solid var(--color-cream);
+  padding: 24px;
+}
+
+.oc-box-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--color-dark);
+  margin-bottom: 18px;
+}
+
+/* Steps */
+.oc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oc-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.oc-step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: var(--color-brown);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.oc-step-title {
+  font-size: 0.84rem;
+  color: var(--color-dark);
+  margin-bottom: 3px;
+}
+
+.oc-step-desc {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--color-dark);
+  opacity: 0.65;
+}
+
+/* Need help */
+.oc-help-text {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+
+.oc-contact-btn {
+  display: block;
+  width: 100%;
+  padding: 11px 0;
+  border: 1.5px solid var(--color-dark);
+  background: none;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.oc-contact-btn:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* Continue Shopping — only shown on mobile */
+.oc-continue-btn {
+  display: none;
+  width: 100%;
+  padding: 13px 0;
+  border: 1.5px solid var(--color-dark);
+  background: none;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+  text-decoration: none;
+  margin-top: 24px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.oc-continue-btn:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .oc-wrap {
+    flex-direction: column;
+    padding: 32px 20px 56px;
+    gap: 0;
+  }
+
+  .oc-hero {
+    padding-bottom: 28px;
+  }
+
+  .oc-check-circle {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+  }
+
+  .oc-check-circle svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .oc-title {
+    font-size: 1.6rem;
+  }
+
+  .oc-details-box {
+    padding: 20px;
+  }
+
+  /* Simplify meta grid to 1 column on mobile */
+  .oc-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Hide sidebar (what's next + need help) on mobile */
+  .oc-sidebar {
+    display: none;
+  }
+
+  /* Show Continue Shopping button on mobile */
+  .oc-continue-btn {
+    display: block;
+  }
+}
