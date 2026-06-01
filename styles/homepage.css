@@ -134,7 +134,7 @@
   display: grid;
   grid-template-columns: 45% 1fr;
   grid-template-rows: auto auto;
-  column-gap: 40px;
+  column-gap: 20px;
   row-gap: 16px;
 }
 
@@ -256,53 +256,42 @@
     font-size: 1.5rem;
   }
 
-  /* Mobile: 1 column, image + text 40/60 split, button full-width below */
+  /* Mobile: float layout — text starts beside image, wraps under it when longer */
   .content-grid {
     grid-template-columns: 1fr;
     gap: 36px;
   }
 
-  /* Tighter gap + 40/60 split gives text column room for long subtitles */
+  /* Switch from grid to block so floats work */
   .content-card {
-    column-gap: 16px;
-    grid-template-columns: 40% 1fr;
+    display: block;
   }
 
-  /* Reset desktop flip — cards 3 & 4 back to img-left */
-  .content-card:nth-child(n+3) {
-    grid-template-columns: 40% 1fr;
+  /* card-content must be display:block (not flex) so text wraps under the image */
+  .card-content {
+    display: block;
   }
 
-  .content-card:nth-child(n+3) img {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .content-card:nth-child(n+3) .card-content {
-    grid-column: 2;
-  }
-
-  .content-card:nth-child(n+3) .card-btn {
-    grid-column: 1 / -1;
-  }
-
-  /* Even cards: flip image to the right */
-  .content-card:nth-child(even) {
-    grid-template-columns: 1fr 40%;
-  }
-
-  .content-card:nth-child(even) img {
-    grid-column: 2;
-  }
-
-  .content-card:nth-child(even) .card-content {
-    grid-column: 1;
-  }
-
-  /* Reset image grid-row span and use square ratio on mobile */
+  /* Odd cards: image floats left */
   .content-card img {
-    grid-row: 1;
+    float: left;
+    width: 40%;
     aspect-ratio: 1;
+    object-fit: cover;
+    margin-right: 16px;
+    margin-bottom: 8px;
+  }
+
+  /* Even cards: image floats right */
+  .content-card:nth-child(even) img {
+    float: right;
+    margin-right: 0;
+    margin-left: 16px;
+  }
+
+  /* Reset desktop grid overrides — not needed with float layout */
+  .content-card:nth-child(n+3) {
+    grid-template-columns: unset;
   }
 
   /* Smaller subtitle to prevent long titles wrapping to 2 lines */
@@ -311,12 +300,14 @@
     letter-spacing: 0.06em;
   }
 
-  /* Button: full width below the image + text row */
+  /* Button clears the float and spans full width below everything */
   .card-btn {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: stretch;
+    clear: both;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
     text-align: center;
+    margin-top: 12px;
   }
 
   .manufacture-about {
