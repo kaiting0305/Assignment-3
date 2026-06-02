@@ -79,3 +79,78 @@ if (scrollTopBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+/* ── LIVE SEARCH ── */
+(function initSearch() {
+    if (typeof products === 'undefined') return;
+
+    // products.js uses "../assets/..." paths (relative to pages/ subdirectory).
+    // On the root page (index.html) we strip the leading "../".
+    const inPagesDir = window.location.pathname.toLowerCase().includes('/pages/');
+
+    function resolveHref(p) {
+        return inPagesDir
+            ? `product-detail.html?id=${p.id}`
+            : `pages/product-detail.html?id=${p.id}`;
+    }
+
+    function resolveImg(p) {
+        return inPagesDir ? p.image : p.image.replace('../', '');
+    }
+
+    const searchInput = document.querySelector('.search-input');
+    if (!searchInput || !searchOverlay) return;
+
+    // Create results panel as a sibling of search-overlay-inner inside the overlay
+    const resultsEl = document.createElement('div');
+    resultsEl.className = 'search-results';
+    searchOverlay.appendChild(resultsEl);
+
+    function render(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) {
+            resultsEl.style.display = 'none';
+            return;
+        }
+
+        const matches = products.filter(p =>
+            p.name.toLowerCase().includes(q) ||
+            p.category.replace(/-/g, ' ').includes(q) ||
+            p.collection.replace(/-/g, ' ').includes(q)
+        ).slice(0, 7);
+
+        if (!matches.length) {
+            resultsEl.innerHTML = `<p class="search-no-results">No results for "<em>${query}</em>"</p>`;
+            resultsEl.style.display = 'block';
+            return;
+        }
+
+        resultsEl.innerHTML = matches.map(p => `
+            <a href="${resolveHref(p)}" class="search-result-item">
+                <img src="${resolveImg(p)}" alt="${p.name}" class="search-result-img">
+                <span class="search-result-name">${p.name}</span>
+            </a>
+        `).join('');
+        resultsEl.style.display = 'block';
+    }
+
+    searchInput.addEventListener('input', () => render(searchInput.value));
+
+    // Enter key navigates to first result
+    searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            const first = resultsEl.querySelector('.search-result-item');
+            if (first) first.click();
+        }
+    });
+
+    // Clear results and input when overlay closes
+    const observer = new MutationObserver(() => {
+        if (!searchOverlay.classList.contains('open')) {
+            resultsEl.style.display = 'none';
+            resultsEl.innerHTML = '';
+            searchInput.value = '';
+        }
+    });
+    observer.observe(searchOverlay, { attributes: true, attributeFilter: ['class'] });
+})();

@@ -1,13 +1,48 @@
 /* ── PRODUCT LIST PAGE SCRIPT ── */
 
+/* ── Filter state ── */
+const activeFilters = {
+  types:       new Set(),
+  collections: new Set()
+};
+
+/* Maps checkbox/tab label text → product data values */
+const typeMap = {
+  'necklaces':         'necklaces',
+  'earrings':          'earrings',
+  'charms & pendants': 'charms-pendants',
+  'rings':             'rings'
+};
+
+const collectionMap = {
+  'by the seashore': 'by-the-seashore',
+  'hello petal':     'hello-petal',
+  'hey babe':        'hey-babe',
+  'in black':        'in-black',
+  'in love':         'in-love',
+  'lucky':           'lucky',
+  'petite pieces':   'petite-pieces',
+  'tackle':          'tackle'
+};
+
+/* ── Apply active filters to the products array ── */
+function getFilteredProducts() {
+  return products.filter(p => {
+    const typeOk = activeFilters.types.size === 0       || activeFilters.types.has(p.category);
+    const collOk = activeFilters.collections.size === 0 || activeFilters.collections.has(p.collection);
+    return typeOk && collOk;
+  });
+}
+
 /* ── Render product cards into both desktop and mobile grids ── */
-function renderProducts() {
+function renderProducts(list) {
+  if (list === undefined) list = products;
+
   const desktopGrid = document.getElementById('product-grid');
   const mobileGrid  = document.getElementById('product-grid-mobile');
-
   if (!desktopGrid && !mobileGrid) return;
 
-  const html = products.map(p => `
+  const html = list.map(p => `
     <a href="product-detail.html?id=${p.id}" class="product-card">
       <img src="${p.image}" alt="${p.name}" class="product-card-img" loading="lazy">
       <div class="product-card-info">
@@ -17,13 +52,109 @@ function renderProducts() {
     </a>
   `).join('');
 
-  if (desktopGrid) desktopGrid.innerHTML = html;
-  if (mobileGrid)  mobileGrid.innerHTML  = html;
+  const emptyMsg = '<p style="grid-column:1/-1;padding:24px 0;opacity:0.5;font-size:0.9rem;">No products match your filters.</p>';
+  if (desktopGrid) desktopGrid.innerHTML = html || emptyMsg;
+  if (mobileGrid)  mobileGrid.innerHTML  = html || emptyMsg;
+
+  /* Update result counts */
+  const n = list.length;
+  const countStr = n === 0 ? 'No results' : `Showing 1 — ${n} of ${n} results`;
+  const desktopCount = document.getElementById('desktop-product-count');
+  if (desktopCount) desktopCount.textContent = countStr;
+  const mobileCountEl = document.querySelector('.mobile-results-row .product-count');
+  if (mobileCountEl) mobileCountEl.textContent = n === 0 ? 'No results' : `Showing 1 — ${n} of ${n} Results`;
 }
 
 renderProducts();
 
-/* ── Re-init Lucide icons after JS-rendered cards (not needed — no icons in cards) ── */
+/* ── Helpers: read checked boxes from a container into activeFilters ── */
+function readFiltersFrom(containerSelector) {
+  activeFilters.types.clear();
+  activeFilters.collections.clear();
+
+  document.querySelectorAll(`${containerSelector} .filter-group`).forEach(group => {
+    const titleEl = group.querySelector('.filter-group-title');
+    if (!titleEl) return;
+    const groupKey = titleEl.textContent.trim().toLowerCase();
+
+    group.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+      const label = cb.closest('.filter-option').querySelector('span').textContent.trim().toLowerCase();
+      if (groupKey === 'product type' && typeMap[label])       activeFilters.types.add(typeMap[label]);
+      if (groupKey === 'collections'  && collectionMap[label]) activeFilters.collections.add(collectionMap[label]);
+    });
+  });
+}
+
+/* ── Desktop sidebar: live-filter on every checkbox change ── */
+document.querySelectorAll('.filter-sidebar input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    readFiltersFrom('.filter-sidebar');
+    /* Reset mobile category tabs back to "Best Sellers" to avoid conflict */
+    resetCategoryTabs();
+    renderProducts(getFilteredProducts());
+  });
+});
+
+/* Desktop "Apply Filters" button (also triggers live, belt-and-braces) */
+const desktopApplyBtn = document.querySelector('.filter-apply-desktop-btn');
+if (desktopApplyBtn) {
+  desktopApplyBtn.addEventListener('click', () => {
+    readFiltersFrom('.filter-sidebar');
+    resetCategoryTabs();
+    renderProducts(getFilteredProducts());
+  });
+}
+
+/* ── Mobile filter overlay: apply on "Apply Filters" button ── */
+const mobileFilterBtn  = document.getElementById('mobile-filter-btn');
+const filterOverlay    = document.getElementById('filter-overlay');
+const filterCloseBtn   = document.getElementById('filter-close-btn');
+const filterApplyBtn   = document.getElementById('filter-apply-btn');
+
+if (mobileFilterBtn && filterOverlay) {
+  mobileFilterBtn.addEventListener('click', () => filterOverlay.classList.add('open'));
+}
+
+if (filterCloseBtn && filterOverlay) {
+  filterCloseBtn.addEventListener('click', () => filterOverlay.classList.remove('open'));
+}
+
+if (filterApplyBtn && filterOverlay) {
+  filterApplyBtn.addEventListener('click', () => {
+    readFiltersFrom('.filter-overlay');
+    resetCategoryTabs();
+    renderProducts(getFilteredProducts());
+    filterOverlay.classList.remove('open');
+  });
+}
+
+/* ── Mobile category tabs ── */
+const categoryTabs = document.querySelectorAll('.category-tab');
+
+function resetCategoryTabs() {
+  categoryTabs.forEach((t, i) => t.classList.toggle('active', i === 0));
+}
+
+categoryTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    categoryTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    const label = tab.textContent.trim().toLowerCase();
+    activeFilters.types.clear();
+    activeFilters.collections.clear();
+
+    if (label !== 'best sellers') {
+      const mapped = typeMap[label];
+      if (mapped) activeFilters.types.add(mapped);
+    }
+
+    /* Clear mobile overlay checkboxes so they stay in sync */
+    document.querySelectorAll('.filter-overlay input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+    renderProducts(getFilteredProducts());
+  });
+});
 
 /* ── Order By dropdown toggle (desktop) ── */
 const orderByBtn      = document.getElementById('order-by-btn');
@@ -70,43 +201,9 @@ if (viewGridBtn && viewListBtn) {
   });
 }
 
-/* ── Mobile filter overlay ── */
-const mobileFilterBtn  = document.getElementById('mobile-filter-btn');
-const filterOverlay    = document.getElementById('filter-overlay');
-const filterCloseBtn   = document.getElementById('filter-close-btn');
-const filterApplyBtn   = document.getElementById('filter-apply-btn');
-
-if (mobileFilterBtn && filterOverlay) {
-  mobileFilterBtn.addEventListener('click', () => {
-    filterOverlay.classList.add('open');
-  });
-}
-
-if (filterCloseBtn && filterOverlay) {
-  filterCloseBtn.addEventListener('click', () => {
-    filterOverlay.classList.remove('open');
-  });
-}
-
-if (filterApplyBtn && filterOverlay) {
-  filterApplyBtn.addEventListener('click', () => {
-    filterOverlay.classList.remove('open');
-  });
-}
-
-/* ── Category tabs (mobile) — visual active state only ── */
-const categoryTabs = document.querySelectorAll('.category-tab');
-categoryTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    categoryTabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-  });
-});
-
 /* ── Pagination — visual active state only ── */
 document.querySelectorAll('.page-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    // Only update active within its own pagination container
     const siblings = btn.closest('.pagination, .pagination-mobile').querySelectorAll('.page-btn');
     siblings.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -114,27 +211,26 @@ document.querySelectorAll('.page-btn').forEach(btn => {
 });
 
 /* ── PRICE RANGE FILTER ── */
-/* Works on any .price-filter container — handles both desktop and mobile */
 function initPriceFilter(wrap) {
-  const rangeMin  = wrap.querySelector('.range-min');
-  const rangeMax  = wrap.querySelector('.range-max');
-  const fill      = wrap.querySelector('.price-track-fill');
-  const inputMin  = wrap.querySelector('.input-min');
-  const inputMax  = wrap.querySelector('.input-max');
+  const rangeMin = wrap.querySelector('.range-min');
+  const rangeMax = wrap.querySelector('.range-max');
+  const fill     = wrap.querySelector('.price-track-fill');
+  const inputMin = wrap.querySelector('.input-min');
+  const inputMax = wrap.querySelector('.input-max');
 
   if (!rangeMin || !rangeMax) return;
 
   const MIN = parseInt(rangeMin.min);
   const MAX = parseInt(rangeMin.max);
-  const GAP = 5; // minimum distance between thumbs
+  const GAP = 5;
 
   function updateFill() {
-    const minVal = parseInt(rangeMin.value);
-    const maxVal = parseInt(rangeMax.value);
+    const minVal   = parseInt(rangeMin.value);
+    const maxVal   = parseInt(rangeMax.value);
     const leftPct  = ((minVal - MIN) / (MAX - MIN)) * 100;
     const rightPct = ((maxVal - MIN) / (MAX - MIN)) * 100;
     if (fill) {
-      fill.style.left  = leftPct  + '%';
+      fill.style.left  = leftPct + '%';
       fill.style.right = (100 - rightPct) + '%';
     }
     if (inputMin) inputMin.value = minVal;
@@ -142,24 +238,17 @@ function initPriceFilter(wrap) {
   }
 
   rangeMin.addEventListener('input', () => {
-    let minVal = parseInt(rangeMin.value);
-    let maxVal = parseInt(rangeMax.value);
-    if (minVal > maxVal - GAP) {
-      rangeMin.value = maxVal - GAP;
-    }
+    if (parseInt(rangeMin.value) > parseInt(rangeMax.value) - GAP)
+      rangeMin.value = parseInt(rangeMax.value) - GAP;
     updateFill();
   });
 
   rangeMax.addEventListener('input', () => {
-    let minVal = parseInt(rangeMin.value);
-    let maxVal = parseInt(rangeMax.value);
-    if (maxVal < minVal + GAP) {
-      rangeMax.value = minVal + GAP;
-    }
+    if (parseInt(rangeMax.value) < parseInt(rangeMin.value) + GAP)
+      rangeMax.value = parseInt(rangeMin.value) + GAP;
     updateFill();
   });
 
-  /* Sync number inputs → sliders */
   if (inputMin) {
     inputMin.addEventListener('change', () => {
       let val = Math.min(Math.max(parseInt(inputMin.value) || MIN, MIN), parseInt(rangeMax.value) - GAP);
@@ -178,9 +267,7 @@ function initPriceFilter(wrap) {
     });
   }
 
-  /* Initial render */
   updateFill();
 }
 
-/* Init all price filters on the page (desktop + mobile) */
 document.querySelectorAll('.price-filter').forEach(initPriceFilter);

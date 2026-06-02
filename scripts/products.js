@@ -15,11 +15,9 @@ const products = [
     collection: "by-the-seashore",
     image: "../assets/product-list-1.jpeg",
     images: ["../assets/product-list-1.jpeg"],
-    shortDescription: "'By the Seashore' sterling silver hand pierced and wrought shell inspired drop earrings. Classic modern domed drops, light and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'By the Seashore' sterling silver hand pierced and wrought shell inspired drop earrings. Classic modern domed drops, light and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 2,
@@ -29,11 +27,9 @@ const products = [
     collection: "tackle",
     image: "../assets/product-list-2.jpeg",
     images: ["../assets/product-list-2.jpeg"],
-    shortDescription: "'Tackle' sterling silver hand pierced and wrought oval drop earrings. Clean, architectural ovals with a smooth polished finish — light and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Tackle' sterling silver hand pierced and wrought oval drop earrings. Clean, architectural ovals with a smooth polished finish — light and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 3,
@@ -43,11 +39,9 @@ const products = [
     collection: "petite-pieces",
     image: "../assets/product-list-3.jpeg",
     images: ["../assets/product-list-3.jpeg"],
-    shortDescription: "'Petite Pieces' sterling silver hand pierced and wrought heart drop earrings. Dainty heart-shaped drops with a smooth polished finish — petite, sweet, and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Petite Pieces' sterling silver hand pierced and wrought heart drop earrings. Dainty heart-shaped drops with a smooth polished finish — petite, sweet, and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 4,
@@ -57,11 +51,9 @@ const products = [
     collection: "in-love",
     image: "../assets/product-list-4.jpeg",
     images: ["../assets/product-list-4.jpeg"],
-    shortDescription: "'In Love' sterling silver hand formed long link chain necklace with 'XO' charm. A generous long-link chain featuring a hand-formed 'XO' charm — bold yet light, designed to layer beautifully or wear as a standalone statement. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'In Love' sterling silver hand formed long link chain necklace with 'XO' charm. A generous long-link chain featuring a hand-formed 'XO' charm — bold yet light, designed to layer beautifully or wear as a standalone statement. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 5,
@@ -71,11 +63,9 @@ const products = [
     collection: "hello-petal",
     image: "../assets/product-list-5.jpeg",
     images: ["../assets/product-list-5.jpeg"],
-    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought drop earrings set with individually selected freshwater pearls. Delicate and feminine, each pair makes the most of the pearl's natural lustre and organic shape. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought drop earrings set with individually selected freshwater pearls. Delicate and feminine, each pair makes the most of the pearl's natural lustre and organic shape. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 6,
@@ -85,11 +75,9 @@ const products = [
     collection: "hello-petal",
     image: "../assets/product-list-6.jpeg",
     images: ["../assets/product-list-6.jpeg"],
-    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought flower drop earrings. Hand-cut flower-shaped drops inspired by soft garden petals — light and feminine with a comfortable sterling silver ear wire. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought flower drop earrings. Hand-cut flower-shaped drops inspired by soft garden petals — light and feminine with a comfortable sterling silver ear wire. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 7,
@@ -99,11 +87,9 @@ const products = [
     collection: "hey-babe",
     image: "../assets/product-list-7.jpeg",
     images: ["../assets/product-list-7.jpeg"],
-    shortDescription: "'Hey Babe' sterling silver hand formed drop earrings set with faceted amethyst. Hand-formed silver settings suspending rich violet amethyst drops — a considered pairing of polished metal and natural stone. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hey Babe' sterling silver hand formed drop earrings set with faceted amethyst. Hand-formed silver settings suspending rich violet amethyst drops — a considered pairing of polished metal and natural stone. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 8,
@@ -113,11 +99,9 @@ const products = [
     collection: "hey-babe",
     image: "../assets/product-list-8.jpeg",
     images: ["../assets/product-list-8.jpeg"],
-    shortDescription: "'Hey Babe' sterling silver hand formed hoop earrings set with freshwater pearls. Sterling silver hoops carrying individually selected freshwater pearls — the clean line of the hoop and the soft glow of the pearl make for an effortlessly elegant everyday earring. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hey Babe' sterling silver hand formed hoop earrings set with freshwater pearls. Sterling silver hoops carrying individually selected freshwater pearls — the clean line of the hoop and the soft glow of the pearl make for an effortlessly elegant everyday earring. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 9,
@@ -127,11 +111,9 @@ const products = [
     collection: "petite-pieces",
     image: "../assets/product-list-9.jpeg",
     images: ["../assets/product-list-9.jpeg"],
-    shortDescription: "'Petite Pieces' sterling silver hand pierced and wrought heart drop earrings. A petite take on the heart drop — hand-formed and polished smooth, small in size but full of intention. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Petite Pieces' sterling silver hand pierced and wrought heart drop earrings. A petite take on the heart drop — hand-formed and polished smooth, small in size but full of intention. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 10,
@@ -141,11 +123,9 @@ const products = [
     collection: "hey-babe",
     image: "../assets/product-list-10.jpeg",
     images: ["../assets/product-list-10.jpeg"],
-    shortDescription: "'Hey Babe' sterling silver hand formed geometric pendant set with faceted topaz. A bold geometric sterling silver form set with a faceted topaz stone — hand-formed and precisely finished, this pendant works equally well dressed up or down. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hey Babe' sterling silver hand formed geometric pendant set with faceted topaz. A bold geometric sterling silver form set with a faceted topaz stone — hand-formed and precisely finished, this pendant works equally well dressed up or down. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 11,
@@ -155,11 +135,9 @@ const products = [
     collection: "hello-petal",
     image: "../assets/product-list-11.jpeg",
     images: ["../assets/product-list-11.jpeg"],
-    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought flower stud earrings. Delicate flower studs hand-pressed from sterling silver sheet — each petal individually shaped for a soft, organic look. Lightweight with sterling silver butterfly backs. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hello Petal' sterling silver hand pierced and wrought flower stud earrings. Delicate flower studs hand-pressed from sterling silver sheet — each petal individually shaped for a soft, organic look. Lightweight with sterling silver butterfly backs. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 12,
@@ -169,11 +147,9 @@ const products = [
     collection: "hey-babe",
     image: "../assets/product-list-12.jpeg",
     images: ["../assets/product-list-12.jpeg"],
-    shortDescription: "'Hey Babe' sterling silver hand pierced and wrought geometric drop earrings. Angular, graphic drops hand-cut from sterling silver sheet — the geometric shapes catch the light cleanly and bring a modern edge to any look. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hey Babe' sterling silver hand pierced and wrought geometric drop earrings. Angular, graphic drops hand-cut from sterling silver sheet — the geometric shapes catch the light cleanly and bring a modern edge to any look. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 13,
@@ -183,11 +159,9 @@ const products = [
     collection: "by-the-seashore",
     image: "../assets/product-list-13.jpeg",
     images: ["../assets/product-list-13.jpeg"],
-    shortDescription: "'By the Seashore' sterling silver hand pierced and wrought disk stud earrings. Smooth, hand-hammered disk studs inspired by tide-polished stones — the subtle texture catches light and gives each pair its own character. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'By the Seashore' sterling silver hand pierced and wrought disk stud earrings. Smooth, hand-hammered disk studs inspired by tide-polished stones — the subtle texture catches light and gives each pair its own character. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 14,
@@ -197,11 +171,9 @@ const products = [
     collection: "tackle",
     image: "../assets/product-list-14.jpeg",
     images: ["../assets/product-list-14.jpeg"],
-    shortDescription: "'Tackle' sterling silver hand pierced and wrought articulated disk drop earrings. Linked disk drops that move with you — each disk hand-formed and individually articulated for a quiet, satisfying swing. A quietly architectural earring from the Tackle collection. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Tackle' sterling silver hand pierced and wrought articulated disk drop earrings. Linked disk drops that move with you — each disk hand-formed and individually articulated for a quiet, satisfying swing. A quietly architectural earring from the Tackle collection. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 15,
@@ -211,11 +183,9 @@ const products = [
     collection: "lucky",
     image: "../assets/product-list-15.jpeg",
     images: ["../assets/product-list-15.jpeg"],
-    shortDescription: "'Lucky?' sterling silver hand pierced and wrought four leaf clover stud earrings. Hand-cut clover studs in sterling silver — a considered, playful motif finished with care. A small piece of luck to wear every day. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Lucky?' sterling silver hand pierced and wrought four leaf clover stud earrings. Hand-cut clover studs in sterling silver — a considered, playful motif finished with care. A small piece of luck to wear every day. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 16,
@@ -225,11 +195,9 @@ const products = [
     collection: "lucky",
     image: "../assets/product-list-16.jpeg",
     images: ["../assets/product-list-16.jpeg"],
-    shortDescription: "'Lucky?' sterling silver hand formed hollow four leaf clover charm pendant on a fine sterling silver chain. The open-work design lets light pass through the form, giving the piece an airy, considered quality. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Lucky?' sterling silver hand formed hollow four leaf clover charm pendant on a fine sterling silver chain. The open-work design lets light pass through the form, giving the piece an airy, considered quality. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 17,
@@ -239,11 +207,9 @@ const products = [
     collection: "lucky",
     image: "../assets/product-list-17.jpeg",
     images: ["../assets/product-list-17.jpeg"],
-    shortDescription: "'Lucky?' sterling silver hand formed filled four leaf clover charm pendant on a fine sterling silver chain. Slightly weightier than its hollow counterpart — a grounded, solid version of the lucky motif. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Lucky?' sterling silver hand formed filled four leaf clover charm pendant on a fine sterling silver chain. Slightly weightier than its hollow counterpart — a grounded, solid version of the lucky motif. Each piece is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 18,
@@ -253,11 +219,9 @@ const products = [
     collection: "in-love",
     image: "../assets/product-list-18.jpeg",
     images: ["../assets/product-list-18.jpeg"],
-    shortDescription: "'In Love' sterling silver hand bent heart shaped wire drop earrings. Open heart shapes bent from fine sterling silver wire — graphic, warm, and light enough for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'In Love' sterling silver hand bent heart shaped wire drop earrings. Open heart shapes bent from fine sterling silver wire — graphic, warm, and light enough for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 19,
@@ -267,11 +231,9 @@ const products = [
     collection: "in-love",
     image: "../assets/product-list-19.jpeg",
     images: ["../assets/product-list-19.jpeg"],
-    shortDescription: "'In Love' sterling silver hand pierced and wrought heart drop earrings. Classic heart-shaped drops hand-cut from sterling silver sheet and polished smooth — timeless and romantic, a quiet declaration. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'In Love' sterling silver hand pierced and wrought heart drop earrings. Classic heart-shaped drops hand-cut from sterling silver sheet and polished smooth — timeless and romantic, a quiet declaration. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 20,
@@ -281,11 +243,9 @@ const products = [
     collection: "hey-babe",
     image: "../assets/product-list-20.jpeg",
     images: ["../assets/product-list-20.jpeg"],
-    shortDescription: "'Hey Babe' sterling silver hand bent geometric wire drop earrings. Geometric forms bent from fine sterling silver wire into precise, architectural shapes — graphic drops that pair beautifully with both casual and dressed-up looks. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hey Babe' sterling silver hand bent geometric wire drop earrings. Geometric forms bent from fine sterling silver wire into precise, architectural shapes — graphic drops that pair beautifully with both casual and dressed-up looks. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   },
   {
     id: 21,
@@ -295,10 +255,8 @@ const products = [
     collection: "hello-petal",
     image: "../assets/product-list-21.jpeg",
     images: ["../assets/product-list-21.jpeg"],
-    shortDescription: "'Hello Petal' sterling silver hand formed drop earrings set with Swarovski crystals. Fine sterling silver drops set with individual Swarovski crystals — the faceted surface catches and scatters light with every movement, beautiful for everyday wear and special occasions alike. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",
-    longDescription: "",
+    shortDescription: "'Hello Petal' sterling silver hand formed drop earrings set with Swarovski crystals. Fine sterling silver drops set with individual Swarovski crystals — the faceted surface catches and scatters light with every movement, beautiful for everyday wear and special occasions alike. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
-    productCare: _productCare,
-    shipping: "Ships within 3–5 business days. Free shipping on orders over $80."
+    productCare: _productCare 
   }
 ];

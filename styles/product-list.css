@@ -466,20 +466,21 @@
   right: 0%;
 }
 
-/* Both range inputs sit on top of each other */
+/* Both range inputs fill the full wrapper height so the browser
+   centres the 16px thumb within the full 24px zone, not the 2px track */
 .range-min,
 .range-max {
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 24px;
   background: transparent;
   -webkit-appearance: none;
   appearance: none;
   pointer-events: none;
   outline: none;
   border: none;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  transform: none;
   margin: 0;
 }
 
