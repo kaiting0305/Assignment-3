@@ -1,3 +1,23 @@
+/* ── CART BADGE ── */
+/* Reads localStorage directly so it works on pages that don't load cart.js */
+function updateCartBadge() {
+    const badge = document.getElementById('cart-badge');
+    if (!badge) return;
+    try {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+        badge.textContent = count > 99 ? '99+' : count;
+        badge.classList.toggle('visible', count > 0);
+    } catch (e) {}
+}
+
+updateCartBadge();
+
+/* Re-run if cart changes in another tab */
+window.addEventListener('storage', (e) => {
+    if (e.key === 'cart') updateCartBadge();
+});
+
 // Search overlay (visual only — not functional)
 const searchOpenBtn = document.getElementById('search-open-btn');
 const searchCloseBtn = document.getElementById('search-close-btn');

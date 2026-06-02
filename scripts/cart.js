@@ -7,6 +7,7 @@ function getCart() {
 
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
+  if (typeof updateCartBadge === 'function') updateCartBadge();
 }
 
 function addToCart(id, qty) {

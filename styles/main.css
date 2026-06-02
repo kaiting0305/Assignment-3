@@ -102,6 +102,38 @@ header {
   color: var(--color-brown);
 }
 
+/* ── CART ICON + BADGE ── */
+.cart-icon-btn {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: var(--color-brown);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 700;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  pointer-events: none;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.cart-badge.visible {
+  display: flex;
+}
+
 .hamburger {
   display: none;
 }
@@ -357,8 +389,13 @@ footer {
     display: none;
   }
 
-  .nav-icons .icon-btn:not(.hamburger) {
+  .nav-icons .icon-btn:not(.hamburger):not(.cart-icon-btn) {
     display: none;
+  }
+
+  /* Keep cart icon visible on mobile */
+  .cart-icon-btn {
+    display: flex;
   }
 
   .hamburger {
