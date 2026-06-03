@@ -2,8 +2,9 @@
 
 /* ── Filter state ── */
 const activeFilters = {
-  types:       new Set(),
-  collections: new Set()
+  types:          new Set(),
+  collections:    new Set(),
+  bestSellersOnly: false
 };
 
 /* Maps checkbox/tab label text → product data values */
@@ -30,7 +31,8 @@ function getFilteredProducts() {
   return products.filter(p => {
     const typeOk = activeFilters.types.size === 0       || activeFilters.types.has(p.category);
     const collOk = activeFilters.collections.size === 0 || activeFilters.collections.has(p.collection);
-    return typeOk && collOk;
+    const bsOk   = !activeFilters.bestSellersOnly       || p.bestSeller === true;
+    return typeOk && collOk && bsOk;
   });
 }
 
@@ -71,6 +73,7 @@ renderProducts();
 function readFiltersFrom(containerSelector) {
   activeFilters.types.clear();
   activeFilters.collections.clear();
+  activeFilters.bestSellersOnly = false;
 
   document.querySelectorAll(`${containerSelector} .filter-group`).forEach(group => {
     const titleEl = group.querySelector('.filter-group-title');
@@ -79,8 +82,9 @@ function readFiltersFrom(containerSelector) {
 
     group.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
       const label = cb.closest('.filter-option').querySelector('span').textContent.trim().toLowerCase();
-      if (groupKey === 'product type' && typeMap[label])       activeFilters.types.add(typeMap[label]);
-      if (groupKey === 'collections'  && collectionMap[label]) activeFilters.collections.add(collectionMap[label]);
+      if (groupKey === 'featured'     && label === 'best sellers') activeFilters.bestSellersOnly = true;
+      if (groupKey === 'product type' && typeMap[label])           activeFilters.types.add(typeMap[label]);
+      if (groupKey === 'collections'  && collectionMap[label])     activeFilters.collections.add(collectionMap[label]);
     });
   });
 }
@@ -143,8 +147,11 @@ categoryTabs.forEach(tab => {
     const label = tab.textContent.trim().toLowerCase();
     activeFilters.types.clear();
     activeFilters.collections.clear();
+    activeFilters.bestSellersOnly = false;
 
-    if (label !== 'best sellers') {
+    if (label === 'best sellers') {
+      activeFilters.bestSellersOnly = true;
+    } else {
       const mapped = typeMap[label];
       if (mapped) activeFilters.types.add(mapped);
     }
