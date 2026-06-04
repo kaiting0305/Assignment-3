@@ -342,7 +342,15 @@
   }
 
   .pd-thumbs {
-    display: none; /* hide thumbnails on mobile */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .pd-thumb {
+    width: 60px;
+    height: 60px;
   }
 
   .pd-info-col {

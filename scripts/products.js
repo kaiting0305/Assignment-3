@@ -14,7 +14,13 @@ const products = [
     category: "earrings",
     collection: "by-the-seashore",
     image: "../assets/product-list-1.jpeg",
-    images: ["../assets/product-list-1.jpeg"],
+    images: [
+      "../assets/product-detail-1-main.jpeg",
+      "../assets/product-detail-1-1.jpeg",
+      "../assets/product-detail-1-2.jpeg",
+      "../assets/product-detail-1-3.jpeg",
+      "../assets/product-detail-1-4.jpeg",
+    ],
     shortDescription: "'By the Seashore' sterling silver hand pierced and wrought shell inspired drop earrings. Classic modern domed drops, light and comfortable for all-day wear. Each pair is individually handcrafted using traditional jeweller's hand skills, meaning no two pieces are exactly alike.\n\nMade entirely by hand in Australia from solid sterling silver — designed to be worn every day and last a lifetime.",  
     measurements: _measurements,
     productCare: _productCare 

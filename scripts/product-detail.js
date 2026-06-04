@@ -16,9 +16,9 @@ document.getElementById('pd-name').textContent        = product.name;
 document.getElementById('pd-price').textContent       = `$${product.price}`;
 document.getElementById('pd-short-desc').textContent  = product.shortDescription || '';
 
-/* Main image */
+/* Main image — use first detail image if available, else fall back to list image */
 const mainImg = document.getElementById('pd-main-img');
-mainImg.src = product.image;
+mainImg.src = (product.images && product.images.length > 0) ? product.images[0] : product.image;
 mainImg.alt = product.name;
 
 /* Thumbnail strip — one thumb per image in product.images */
