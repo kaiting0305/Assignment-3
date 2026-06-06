@@ -2,10 +2,15 @@
 
 /* ── Filter state ── */
 const activeFilters = {
-  types:          new Set(),
-  collections:    new Set(),
-  bestSellersOnly: false
+  types:           new Set(),
+  collections:     new Set(),
+  bestSellersOnly: false,
+  priceMin:        0,
+  priceMax:        300
 };
+
+/* ── Sort state ── */
+let activeSort = 'default'; // 'default' | 'featured' | 'price-asc' | 'price-desc' | 'newest'
 
 /* Maps checkbox/tab label text → product data values */
 const typeMap = {
@@ -26,19 +31,49 @@ const collectionMap = {
   'tackle':          'tackle'
 };
 
-/* ── Apply active filters to the products array ── */
+/* ── Apply active filters ── */
 function getFilteredProducts() {
   return products.filter(p => {
-    const typeOk = activeFilters.types.size === 0       || activeFilters.types.has(p.category);
-    const collOk = activeFilters.collections.size === 0 || activeFilters.collections.has(p.collection);
-    const bsOk   = !activeFilters.bestSellersOnly       || p.bestSeller === true;
-    return typeOk && collOk && bsOk;
+    const typeOk  = activeFilters.types.size === 0       || activeFilters.types.has(p.category);
+    const collOk  = activeFilters.collections.size === 0 || activeFilters.collections.has(p.collection);
+    const bsOk    = !activeFilters.bestSellersOnly       || p.bestSeller === true;
+    const priceOk = p.price >= activeFilters.priceMin && p.price <= activeFilters.priceMax;
+    return typeOk && collOk && bsOk && priceOk;
   });
 }
 
-/* ── Render product cards into both desktop and mobile grids ── */
+/* ── Apply active sort to a filtered list ── */
+function getSortedProducts(list) {
+  const arr = [...list]; // never mutate the original
+  switch (activeSort) {
+    case 'default':
+      return arr.sort((a, b) => a.id - b.id);
+    case 'featured':
+      // Best sellers first (in id order), then the rest (in id order)
+      return arr.sort((a, b) => {
+        if (a.bestSeller && !b.bestSeller) return -1;
+        if (!a.bestSeller && b.bestSeller) return  1;
+        return a.id - b.id;
+      });
+    case 'price-asc':
+      return arr.sort((a, b) => a.price !== b.price ? a.price - b.price : a.id - b.id);
+    case 'price-desc':
+      return arr.sort((a, b) => a.price !== b.price ? b.price - a.price : a.id - b.id);
+    case 'newest':
+      return arr.sort((a, b) => b.id - a.id);
+    default:
+      return arr.sort((a, b) => a.id - b.id);
+  }
+}
+
+/* Convenience: get the final display list (filtered + sorted) */
+function getDisplayList() {
+  return getSortedProducts(getFilteredProducts());
+}
+
+/* ── Render product cards into both grids ── */
 function renderProducts(list) {
-  if (list === undefined) list = products;
+  if (list === undefined) list = getSortedProducts(products);
 
   const desktopGrid = document.getElementById('product-grid');
   const mobileGrid  = document.getElementById('product-grid-mobile');
@@ -67,13 +102,21 @@ function renderProducts(list) {
   if (mobileCountEl) mobileCountEl.textContent = n === 0 ? 'No results' : `Showing 1 — ${n} of ${n} Results`;
 }
 
-renderProducts();
+renderProducts(getDisplayList());
+setActiveOrderOption('Default');
 
-/* ── Helpers: read checked boxes from a container into activeFilters ── */
+/* ── Helpers: read all filter inputs from a container into activeFilters ── */
 function readFiltersFrom(containerSelector) {
   activeFilters.types.clear();
   activeFilters.collections.clear();
   activeFilters.bestSellersOnly = false;
+
+  /* Read price range from slider */
+  const container = document.querySelector(containerSelector);
+  const rangeMin  = container?.querySelector('.range-min');
+  const rangeMax  = container?.querySelector('.range-max');
+  activeFilters.priceMin = rangeMin ? parseInt(rangeMin.value) : 0;
+  activeFilters.priceMax = rangeMax ? parseInt(rangeMax.value) : 300;
 
   document.querySelectorAll(`${containerSelector} .filter-group`).forEach(group => {
     const titleEl = group.querySelector('.filter-group-title');
@@ -93,44 +136,38 @@ function readFiltersFrom(containerSelector) {
 document.querySelectorAll('.filter-sidebar input[type="checkbox"]').forEach(cb => {
   cb.addEventListener('change', () => {
     readFiltersFrom('.filter-sidebar');
-    /* Reset mobile category tabs back to "Best Sellers" to avoid conflict */
     resetCategoryTabs();
-    renderProducts(getFilteredProducts());
+    renderProducts(getDisplayList());
   });
 });
 
-/* Desktop "Apply Filters" button (also triggers live, belt-and-braces) */
+/* Desktop "Apply Filters" button */
 const desktopApplyBtn = document.querySelector('.filter-apply-desktop-btn');
 if (desktopApplyBtn) {
   desktopApplyBtn.addEventListener('click', () => {
     readFiltersFrom('.filter-sidebar');
     resetCategoryTabs();
-    renderProducts(getFilteredProducts());
+    renderProducts(getDisplayList());
   });
 }
 
-/* ── Mobile filter overlay: apply on "Apply Filters" button ── */
-const mobileFilterBtn  = document.getElementById('mobile-filter-btn');
-const filterOverlay    = document.getElementById('filter-overlay');
-const filterCloseBtn   = document.getElementById('filter-close-btn');
-const filterApplyBtn   = document.getElementById('filter-apply-btn');
+/* ── Mobile filter overlay ── */
+const filterOverlay = document.getElementById('filter-overlay');
 
-if (mobileFilterBtn && filterOverlay) {
-  mobileFilterBtn.addEventListener('click', () => filterOverlay.classList.add('open'));
-}
+document.getElementById('mobile-filter-btn')?.addEventListener('click', () => {
+  filterOverlay?.classList.add('open');
+});
 
-if (filterCloseBtn && filterOverlay) {
-  filterCloseBtn.addEventListener('click', () => filterOverlay.classList.remove('open'));
-}
+document.getElementById('filter-close-btn')?.addEventListener('click', () => {
+  filterOverlay?.classList.remove('open');
+});
 
-if (filterApplyBtn && filterOverlay) {
-  filterApplyBtn.addEventListener('click', () => {
-    readFiltersFrom('.filter-overlay');
-    resetCategoryTabs();
-    renderProducts(getFilteredProducts());
-    filterOverlay.classList.remove('open');
-  });
-}
+document.getElementById('filter-apply-btn')?.addEventListener('click', () => {
+  readFiltersFrom('.filter-overlay');
+  resetCategoryTabs();
+  renderProducts(getDisplayList());
+  filterOverlay?.classList.remove('open');
+});
 
 /* ── Mobile category tabs ── */
 const categoryTabs = document.querySelectorAll('.category-tab');
@@ -156,38 +193,86 @@ categoryTabs.forEach(tab => {
       if (mapped) activeFilters.types.add(mapped);
     }
 
-    /* Clear mobile overlay checkboxes so they stay in sync */
+    /* Clear mobile overlay checkboxes to stay in sync */
     document.querySelectorAll('.filter-overlay input[type="checkbox"]').forEach(cb => cb.checked = false);
 
-    renderProducts(getFilteredProducts());
+    renderProducts(getDisplayList());
   });
 });
 
-/* ── Order By dropdown toggle (desktop) ── */
+/* ── Order By ── */
+const sortLabelMap = {
+  'default':            'default',
+  'featured':           'featured',
+  'price: low to high': 'price-asc',
+  'price: high to low': 'price-desc',
+  'newest':             'newest'
+};
+
 const orderByBtn      = document.getElementById('order-by-btn');
 const orderByDropdown = document.getElementById('order-by-dropdown');
+const mobileOrderBtn  = document.getElementById('mobile-order-btn');
+const mobileOrderDropdown = document.getElementById('mobile-order-dropdown');
+
+/* Update button label text (preserves the chevron icon) */
+function updateOrderByLabel(displayText) {
+  [orderByBtn, mobileOrderBtn].forEach(btn => {
+    if (!btn) return;
+    btn.innerHTML = `${displayText} <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>`;
+  });
+  if (window.lucide) lucide.createIcons();
+}
+
+/* Mark the matching option as active in both dropdowns */
+function setActiveOrderOption(displayText) {
+  document.querySelectorAll('.order-by-option').forEach(opt => {
+    opt.classList.toggle('active', opt.textContent.trim().toLowerCase() === displayText.toLowerCase());
+  });
+}
+
+function handleSortClick(optEl) {
+  const label = optEl.textContent.trim();
+  const key   = sortLabelMap[label.toLowerCase()];
+  if (!key) return;
+  activeSort = key;
+  updateOrderByLabel(label);
+  setActiveOrderOption(label);
+  renderProducts(getDisplayList());
+}
 
 if (orderByBtn && orderByDropdown) {
-  orderByBtn.addEventListener('click', (e) => {
+  orderByBtn.addEventListener('click', e => {
     e.stopPropagation();
     const isOpen = orderByDropdown.classList.toggle('open');
     orderByBtn.setAttribute('aria-expanded', isOpen);
   });
 }
 
-/* ── Order By dropdown toggle (mobile) ── */
-const mobileOrderBtn      = document.getElementById('mobile-order-btn');
-const mobileOrderDropdown = document.getElementById('mobile-order-dropdown');
-
 if (mobileOrderBtn && mobileOrderDropdown) {
-  mobileOrderBtn.addEventListener('click', (e) => {
+  mobileOrderBtn.addEventListener('click', e => {
     e.stopPropagation();
     const isOpen = mobileOrderDropdown.classList.toggle('open');
     mobileOrderBtn.setAttribute('aria-expanded', isOpen);
   });
 }
 
-/* ── Close all dropdowns when clicking outside ── */
+document.querySelectorAll('#order-by-dropdown .order-by-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    handleSortClick(opt);
+    orderByDropdown.classList.remove('open');
+    if (orderByBtn) orderByBtn.setAttribute('aria-expanded', false);
+  });
+});
+
+document.querySelectorAll('#mobile-order-dropdown .order-by-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    handleSortClick(opt);
+    mobileOrderDropdown.classList.remove('open');
+    if (mobileOrderBtn) mobileOrderBtn.setAttribute('aria-expanded', false);
+  });
+});
+
+/* Close all dropdowns when clicking outside */
 document.addEventListener('click', () => {
   if (orderByDropdown)      orderByDropdown.classList.remove('open');
   if (mobileOrderDropdown)  mobileOrderDropdown.classList.remove('open');
@@ -218,7 +303,9 @@ document.querySelectorAll('.page-btn').forEach(btn => {
 });
 
 /* ── PRICE RANGE FILTER ── */
-function initPriceFilter(wrap) {
+/* liveFilter = true → re-render products on every drag (desktop sidebar)
+   liveFilter = false → only update UI; filtering happens on Apply button (mobile) */
+function initPriceFilter(wrap, liveFilter) {
   const rangeMin = wrap.querySelector('.range-min');
   const rangeMax = wrap.querySelector('.range-max');
   const fill     = wrap.querySelector('.price-track-fill');
@@ -244,16 +331,25 @@ function initPriceFilter(wrap) {
     if (inputMax) inputMax.value = maxVal;
   }
 
+  function applyPrice() {
+    if (!liveFilter) return;
+    activeFilters.priceMin = parseInt(rangeMin.value);
+    activeFilters.priceMax = parseInt(rangeMax.value);
+    renderProducts(getDisplayList());
+  }
+
   rangeMin.addEventListener('input', () => {
     if (parseInt(rangeMin.value) > parseInt(rangeMax.value) - GAP)
       rangeMin.value = parseInt(rangeMax.value) - GAP;
     updateFill();
+    applyPrice();
   });
 
   rangeMax.addEventListener('input', () => {
     if (parseInt(rangeMax.value) < parseInt(rangeMin.value) + GAP)
       rangeMax.value = parseInt(rangeMin.value) + GAP;
     updateFill();
+    applyPrice();
   });
 
   if (inputMin) {
@@ -262,6 +358,7 @@ function initPriceFilter(wrap) {
       rangeMin.value = val;
       inputMin.value = val;
       updateFill();
+      applyPrice();
     });
   }
 
@@ -271,10 +368,15 @@ function initPriceFilter(wrap) {
       rangeMax.value = val;
       inputMax.value = val;
       updateFill();
+      applyPrice();
     });
   }
 
   updateFill();
 }
 
-document.querySelectorAll('.price-filter').forEach(initPriceFilter);
+/* Desktop sidebar: live filter on drag. Mobile overlay: apply on button click. */
+const desktopPF = document.querySelector('.filter-sidebar .price-filter');
+const mobilePF  = document.querySelector('.filter-overlay .price-filter');
+if (desktopPF) initPriceFilter(desktopPF, true);
+if (mobilePF)  initPriceFilter(mobilePF, false);

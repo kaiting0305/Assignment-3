@@ -204,6 +204,11 @@
   background-color: var(--color-cream);
 }
 
+.order-by-option.active {
+  color: var(--color-brown);
+  font-weight: 500;
+}
+
 /* ── PRODUCT GRID ── */
 .product-grid {
   display: grid;
